@@ -19,9 +19,9 @@ export const setTheme = (mode) => {
     mixins: {
       toolbar: {
         minHeight: '48px',
-        padding: '10px',
         '@media (min-width: 600px)': {
           minHeight: '48px',
+          padding: '10px 8vw',
         },
       },
     },

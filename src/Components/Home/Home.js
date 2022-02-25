@@ -4,17 +4,12 @@ import { useTheme } from '@mui/material/styles';
 import React from 'react';
 import Header from '../Header/Header';
 import { ColorModeContext } from '../../themes/colorModeContext';
+import Intro from '../Intro/Intro';
 
 const Home = () => {
-  const theme = useTheme();
-  const colorMode = React.useContext(ColorModeContext);
-  console.log(colorMode);
-  console.log(theme);
-  console.log(theme?.palette?.background);
-
   return (
     <>
-      <Header />
+      <Intro />
     </>
   );
 };
