@@ -1,1 +1,1 @@
-export const LOTOURL = 'http://localhost:3000/';
+export const LOTOURL = 'https://laughing-buddha-payment.netlify.app/';

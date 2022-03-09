@@ -81,7 +81,7 @@ export default function MintList({ winners, category }) {
                     sx={{ m: 1, color: theme.palette.success.main }}
                   >
                     {' '}
-                    #{item.id}
+                    {item.id}
                   </Typography>
                 </Alert>
               </Grid>

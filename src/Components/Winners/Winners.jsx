@@ -408,13 +408,18 @@ const Winner = () => {
                   type="submit"
                   size="medium"
                   disabled={mint.status}
-                  // style={{
-                  //   cursor: mint.status ? 'not-allowed' : 'pointer',
-                  //   pointerEvents: mint.status ? 'none' : '',
-                  // }}
                 >
                   Submit
                 </Button>
+                {mint.status && (
+                  <span
+                    style={{
+                      marginLeft: 10,
+                    }}
+                  >
+                    Close the Mint to Pick Winners
+                  </span>
+                )}
               </form>
             )}
           </Paper>

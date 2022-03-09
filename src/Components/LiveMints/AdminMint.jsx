@@ -66,7 +66,7 @@ export default function AdminMint() {
   const [price, setPrice] = React.useState('');
   const [winner, setWinner] = React.useState('');
   const [status, setStatus] = React.useState(true);
-  // const [link, setLink] = React.useState('');
+  const [merchantWallet, setMerchantWallet] = React.useState('');
   const [priceGA, setPriceGA] = React.useState('');
   const [nftGA, setNftGA] = React.useState('');
   const [newMint, setNewMint] = React.useState(false);
@@ -93,7 +93,7 @@ export default function AdminMint() {
     setSupply(mint.supply);
     setPrice(mint.price);
     setWinner(mint.winner);
-    // setLink(mint.link);
+    setMerchantWallet(mint.merchantWallet);
     setPriceGA(mint.priceGA);
     setNftGA(mint.nftGA);
     setStatus(mint.status);
@@ -135,6 +135,7 @@ export default function AdminMint() {
         mint.priceGA = priceGA;
         mint.nftGA = nftGA;
         mint.status = status;
+        mint.merchantWallet = merchantWallet;
       })
     );
     const mint = {
@@ -145,6 +146,7 @@ export default function AdminMint() {
       status,
       priceGA,
       nftGA,
+      merchantWallet,
     };
     console.log(mintID);
     try {
@@ -180,6 +182,7 @@ export default function AdminMint() {
       participants: [],
       tokens,
       tokensBought: [],
+      merchantWallet,
     };
     handleClose();
     reset();
@@ -200,6 +203,7 @@ export default function AdminMint() {
             nftGA,
             status,
             id: genratedID,
+            merchantWallet,
           });
         })
       );
@@ -218,7 +222,7 @@ export default function AdminMint() {
       setSupply('');
       setPrice('');
       setWinner('');
-      // setLink('');
+      setMerchantWallet('');
       setStatus('');
       setNftGA('');
       console.log('resetting');
@@ -396,14 +400,14 @@ export default function AdminMint() {
                   </Select>
                 </FormControl>
               </Grid>
-              {/* <Grid item xs={12} sm={6} md={4} rowSpacing={2}>
+              <Grid item xs={12} sm={6} md={4} rowSpacing={2}>
                 <TextField
                   id="outlined-basic"
-                  label="Link"
+                  label="Merchant Wallet Address"
                   variant="outlined"
-                  value={link}
+                  value={merchantWallet}
                   onChange={(e) => {
-                    setLink(e.target.value);
+                    setMerchantWallet(e.target.value);
                   }}
                   required
                   sx={{
@@ -419,7 +423,7 @@ export default function AdminMint() {
                     },
                   }}
                 />
-              </Grid> */}
+              </Grid>
               <Grid item xs={12} sm={6} md={4} rowSpacing={2}>
                 <TextField
                   id="outlined-basic"
@@ -524,11 +528,7 @@ export default function AdminMint() {
                 <StyledTableCell align="center">{mint.price}</StyledTableCell>
                 <StyledTableCell align="center">{mint.winner}</StyledTableCell>
                 <StyledTableCell align="center">
-                  <a
-                    href={`${LOTOURL}live/${mint.link}`}
-                    target="_blank"
-                    rel="noreferrer"
-                  >
+                  <a href={`${LOTOURL}`} target="_blank" rel="noreferrer">
                     <Button
                       variant="outlined"
                       size="small"

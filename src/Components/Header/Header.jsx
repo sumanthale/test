@@ -37,11 +37,11 @@ const pages = [
     to: 'closed',
     public: true,
   },
-  {
-    name: 'Pick Winners',
-    to: 'winners',
-    public: false,
-  },
+  // {
+  //   name: 'Pick Winners',
+  //   to: 'winners',
+  //   public: false,
+  // },
 ];
 
 const Header = () => {
@@ -191,28 +191,41 @@ const Header = () => {
                 display: { xs: 'none', md: 'flex' },
               }}
             >
-              <img
-                src={Twitter}
-                alt="img"
-                width="40px"
-                height="40px"
-                style={{
-                  borderRadius: '50%',
-                  marginRight: '15px',
-                  cursor: 'pointer',
-                }}
-              />
-              <img
-                src={Discord}
-                alt="img"
-                width="40px"
-                height="40px"
-                style={{
-                  borderRadius: '50%',
-                  marginRight: '15px',
-                  cursor: 'pointer',
-                }}
-              />
+              <a
+                href="https://twitter.com/SolaughBuddha"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <img
+                  src={Twitter}
+                  alt="img"
+                  width="40px"
+                  height="40px"
+                  style={{
+                    borderRadius: '50%',
+                    marginRight: '15px',
+                    cursor: 'pointer',
+                  }}
+                />
+              </a>
+
+              <a
+                href="https://discord.com/invite/epvVaY4bMr"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <img
+                  src={Discord}
+                  alt="img"
+                  width="40px"
+                  height="40px"
+                  style={{
+                    borderRadius: '50%',
+                    marginRight: '15px',
+                    cursor: 'pointer',
+                  }}
+                />
+              </a>
             </Box>
             {user ? (
               <Box sx={{ flexGrow: 0 }}>
