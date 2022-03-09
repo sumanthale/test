@@ -33,6 +33,11 @@ const pages = [
     public: true,
   },
   {
+    name: 'Closed Mints',
+    to: 'closed',
+    public: true,
+  },
+  {
     name: 'Pick Winners',
     to: 'winners',
     public: false,
@@ -73,7 +78,7 @@ const Header = () => {
               component="div"
               sx={{ display: { xs: 'none', md: 'flex' } }}
             >
-              Laughing Buddha
+              Solana Laughing Buddha
             </Typography>
 
             <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
@@ -130,7 +135,7 @@ const Header = () => {
               component="div"
               sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}
             >
-              Laughing Buddha
+              Solana Laughing Buddha
             </Typography>
 
             <Box

@@ -1,15 +1,10 @@
 import { Box, Paper, Typography } from '@mui/material';
-import React, { useContext, useEffect } from 'react';
+import React from 'react';
 import { useTheme } from '@mui/material/styles';
-import MintDetails from './MintDetails';
-import AdminClosedDetails from './AdminMint';
-import { AuthContext } from '../../context/AuthContext';
+import ClosedMintDetails from './ClosedMintDetails';
 
-// Add a new document in collection "cities"
-
-const LiveMints = () => {
+const ClosedMints = () => {
   const theme = useTheme();
-  const { user } = useContext(AuthContext);
 
   return (
     <Box
@@ -65,11 +60,12 @@ const LiveMints = () => {
           >
             Daily Mints
           </Typography>
-          {user ? <AdminClosedDetails /> : <MintDetails />}
+          {/* {user ? <ClosedAdminMint /> : <ClosedMintDetails />} */}
+          <ClosedMintDetails />
         </Box>
       </Paper>
     </Box>
   );
 };
 
-export default LiveMints;
+export default ClosedMints;

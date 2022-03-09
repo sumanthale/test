@@ -1,13 +1,19 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import React, { lazy } from 'react';
 import Loadable from '../Helpers/Loadable';
-import Header from '../Components/Header/Header';
-import LiveMints from '../Components/LiveMints/LiveMints';
 import { Box } from '@mui/system';
-import Mint from '../Components/Mint/Mint';
-import RequireAuth from '../Helpers/requrieAuth';
-import Winner from '../Components/Winners/Winners';
 const Intro = Loadable(lazy(() => import('../Components/Intro/Intro')));
+
+const LiveMints = Loadable(
+  lazy(() => import('../Components/LiveMints/LiveMints'))
+);
+const Mint = Loadable(lazy(() => import('../Components/Mint/Mint')));
+const RequireAuth = Loadable(lazy(() => import('../Helpers/requrieAuth')));
+const Winner = Loadable(lazy(() => import('../Components/Winners/Winners')));
+const ClosedMints = Loadable(
+  lazy(() => import('../Components/ClosedMint/ClosedMints'))
+);
+const Header = Loadable(lazy(() => import('../Components/Header/Header')));
 
 export default function ROUTES() {
   return (
@@ -15,16 +21,25 @@ export default function ROUTES() {
       <Header />
       <Box
         sx={{
-          mt: { xs: '50px', sm: '70px', md: '90px' },
+          mt: { xs: '60px', sm: '80px', md: '90px' },
         }}
       ></Box>
       <Routes>
         <Route path="/" element={<Intro />} />
         <Route path="/live" element={<LiveMints />} />
         <Route path="/mint" element={<Mint />} />
-        <Route path="/mint/:name" element={<Mint />} />
-        <Route
+        <Route path="/closed" element={<ClosedMints />} />
+        <Route path="/closed/:id" element={<Mint />} />
+        {/* <Route
           path="/winners"
+          element={
+            <RequireAuth>
+              <Winner />
+            </RequireAuth>
+          }
+        /> */}
+        <Route
+          path="/winners/:id"
           element={
             <RequireAuth>
               <Winner />

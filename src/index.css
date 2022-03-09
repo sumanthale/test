@@ -19,6 +19,7 @@ body {
 }
 ::-webkit-scrollbar {
   width: 0px;
+  height: 2px;
 }
 
 ::-webkit-scrollbar-track {
@@ -29,4 +30,19 @@ body {
   border-radius: 50px;
   background-clip: content-box;
   background-color: #2196f3;
+}
+
+.MuiAlert-message {
+  overflow: hidden;
+  width: 100%;
+  text-align: center;
+}
+.MuiAlert-message .MuiTypography-root {
+  font-size: 1vw;
+}
+
+@media only screen and (max-width: 850px) {
+  .MuiAlert-message .MuiTypography-root {
+    font-size: 2vw;
+  }
 }

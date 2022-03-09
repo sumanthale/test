@@ -1,40 +1,109 @@
 import * as React from 'react';
-import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
-import ListItemText from '@mui/material/ListItemText';
-import ListItemAvatar from '@mui/material/ListItemAvatar';
-import Avatar from '@mui/material/Avatar';
-import ImageIcon from '@mui/icons-material/Image';
-import WorkIcon from '@mui/icons-material/Work';
-import BeachAccessIcon from '@mui/icons-material/BeachAccess';
+import { useTheme } from '@mui/material/styles';
+import { Alert, Grid, Typography } from '@mui/material';
+import first from '../../assets/images/first.png';
+import second from '../../assets/images/second.png';
+import third from '../../assets/images/third.png';
+import last from '../../assets/images/last.png';
+import Button from '@mui/material/Button';
+import { Download } from '@mui/icons-material';
 
-export default function MintList({ mint }) {
+export default function MintList({ winners, category }) {
+  const theme = useTheme();
+  const downloadData = () => {
+    let csvContent =
+      'data:text/csv;charset=utf-8,' +
+      `Position,ID,Pick\n` +
+      winners.map((e) => [e.position, e.id, e.pick].join(',')).join('\n');
+
+    var encodedUri = encodeURI(csvContent);
+    var link = document.createElement('a');
+    link.setAttribute('href', encodedUri);
+    link.setAttribute('download', `${category} winners.csv`);
+    document.body.appendChild(link);
+
+    link.click();
+  };
   return (
-    <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
-      <ListItem>
-        <ListItemAvatar>
-          <Avatar>
-            <ImageIcon />
-          </Avatar>
-        </ListItemAvatar>
-        <ListItemText primary="Photos" secondary="Jan 9, 2014" />
-      </ListItem>
-      <ListItem>
-        <ListItemAvatar>
-          <Avatar>
-            <WorkIcon />
-          </Avatar>
-        </ListItemAvatar>
-        <ListItemText primary="Work" secondary="Jan 7, 2014" />
-      </ListItem>
-      <ListItem>
-        <ListItemAvatar>
-          <Avatar>
-            <BeachAccessIcon />
-          </Avatar>
-        </ListItemAvatar>
-        <ListItemText primary="Vacation" secondary="July 20, 2014" />
-      </ListItem>
-    </List>
+    <>
+      {!!winners && (
+        <Grid item container xs={12} sm={12} md={10} rowSpacing={2}>
+          <Grid
+            item
+            xs={12}
+            sx={{
+              zIndex: 9999,
+            }}
+          >
+            <Alert
+              variant="filled"
+              severity="success"
+              sx={{ position: 'relative', display: 'flex' }}
+            >
+              Winners {winners.length}{' '}
+              <Button
+                variant="contained"
+                color="secondary"
+                size="small"
+                sx={{ position: 'absolute', right: '8px', bottom: '8px' }}
+                onClick={downloadData}
+              >
+                Export Data <Download />
+              </Button>
+            </Alert>
+          </Grid>
+          <Grid
+            item
+            container
+            md={12}
+            sx={{
+              maxHeight: { xs: '35vh', sm: '35vh', md: '60vh' },
+              minHeight: { xs: '35vh', sm: '35vh', md: '60vh' },
+              overflow: 'auto',
+            }}
+            spacing={2}
+          >
+            {winners.map((item, idx) => (
+              <Grid item xs={12} md={12} key={idx}>
+                <Alert
+                  iconMapping={{
+                    success: <img src={first} alt="" />,
+                    info: <img src={second} alt="" />,
+                    warning: <img src={third} alt="" />,
+                    error: <img src={last} alt="" />,
+                  }}
+                  severity={colors[item.position]}
+                  color={colors[item.position]}
+                >
+                  <Typography
+                    variant="h4"
+                    component="span"
+                    sx={{ m: 1, color: theme.palette.success.main }}
+                  >
+                    {' '}
+                    #{item.id}
+                  </Typography>
+                </Alert>
+              </Grid>
+            ))}
+          </Grid>
+        </Grid>
+      )}
+    </>
   );
 }
+const colors = [
+  'success',
+  'success',
+  'info',
+  'warning',
+  'error',
+  'success',
+  'info',
+  'warning',
+  'error',
+  'success',
+  'info',
+  'warning',
+  'error',
+];

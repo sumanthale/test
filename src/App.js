@@ -4,14 +4,16 @@ import ROUTES from './routes';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { AuthProvider } from './context/AuthContext';
+import { ConfirmProvider } from 'material-ui-confirm';
 
 function App() {
   return (
     <ColorModeContextProvider>
       <AuthProvider>
         <ToastContainer theme="colored" />
-
-        <ROUTES />
+        <ConfirmProvider>
+          <ROUTES />
+        </ConfirmProvider>
       </AuthProvider>
     </ColorModeContextProvider>
   );

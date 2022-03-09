@@ -2,11 +2,13 @@ import { Box, Button, Grid, Typography } from '@mui/material';
 import React from 'react';
 import { useTheme } from '@mui/material/styles';
 import Buddha from '../../assets/images/buddha.jpeg';
+import { useNavigate } from 'react-router-dom';
 const Intro = () => {
   const theme = useTheme();
+  const navigate = useNavigate();
 
   return (
-    <div className="Intro">
+    <Box>
       <Grid container spacing={2}>
         <Grid
           item
@@ -19,12 +21,16 @@ const Intro = () => {
             flexDirection: 'column',
           }}
         >
-          <Box>
+          <Box
+            sx={{
+              p: 5,
+            }}
+          >
             <Typography
               variant="h1"
               component="div"
               sx={{
-                fontSize: { md: '80px', sm: '20px' },
+                fontSize: { md: '80px', sm: '60px' },
               }}
             >
               What is
@@ -34,11 +40,11 @@ const Intro = () => {
               component="div"
               gutterBottom
               sx={{
-                fontSize: { md: '70px', sm: '20px' },
+                fontSize: { md: '70px', sm: '50px' },
                 color: theme.palette.primary.main,
               }}
             >
-              Solana Monke Ball?
+              Solana Laughing Buddha
             </Typography>
           </Box>
           <Box
@@ -54,11 +60,12 @@ const Intro = () => {
                 color: '#9e9e9e',
               }}
             >
-              Solana Monke Ball is the first Solana-Based Lottery that pays
-              majority of it's revenue to holders. We believe giving out most of
-              our revenue is the only way to stay legitimate. Other lottery NFTs
-              give out 20, 30, or 50%... but we give out 80%. Why? Because we're
-              members of the ecosystem. We want to build for the longterm.
+              Solana Laughing Buddha Lotto is the first Solana-Based Lottery
+              that pays majority of it's revenue to holders. We believe giving
+              out most of our revenue is the only way to stay legitimate. Other
+              lottery NFTs give out 20, 30, or 50%... but we give out 80%. Why?
+              Because we're members of the ecosystem. We want to build for the
+              longterm.
             </Typography>
           </Box>
           <Box
@@ -73,7 +80,7 @@ const Intro = () => {
             <Button
               variant="outlined"
               sx={{
-                padding: '14px 34px',
+                padding: { md: '14px 34px', sm: '7px 17px' },
                 borderRadius: 10,
               }}
             >
@@ -82,20 +89,33 @@ const Intro = () => {
             <Button
               variant="contained"
               sx={{
-                padding: '14px 45px',
+                padding: { md: '14px 34px', sm: '7px 17px' },
                 borderRadius: 10,
                 marginLeft: 10,
+              }}
+              onClick={() => {
+                navigate('/live');
               }}
             >
               💲 Buy
             </Button>
           </Box>
         </Grid>
-        <Grid item xs={12} sm={12} md={6}>
+        <Grid
+          item
+          xs={12}
+          sm={12}
+          md={6}
+          sx={{
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+          }}
+        >
           <img src={Buddha} alt="img" width="90%" />
         </Grid>
       </Grid>
-    </div>
+    </Box>
   );
 };
 

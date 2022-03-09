@@ -10,7 +10,7 @@ import Paper from '@mui/material/Paper';
 import { Button } from '@mui/material';
 import { collection, getDocs, query, where } from 'firebase/firestore';
 import { db } from '../../firebase/firebase';
-import { LOTOURL } from '../../Helpers/default';
+import { useNavigate } from 'react-router-dom';
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -32,12 +32,14 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
   },
 }));
 
-export default function MintDetails() {
+export default function ClosedMintDetails() {
   const [mints, setMints] = React.useState([]);
+  const navigate = useNavigate();
   React.useEffect(() => {
     const fetchedMints = [];
+
     async function fetchData() {
-      const q = query(collection(db, 'mints'), where('status', '==', true));
+      const q = query(collection(db, 'mints'), where('status', '==', false));
       const querySnapshot = await getDocs(q);
       querySnapshot.forEach((doc) => {
         fetchedMints.push(doc.data());
@@ -45,23 +47,11 @@ export default function MintDetails() {
 
       setMints(fetchedMints);
     }
-    // async function fetchData() {
-    //   const querySnapshot = await getDocs(collection(db, 'mints'));
-    //   querySnapshot.forEach((doc) => {
-    //     console.log(doc.id, ' => ', doc.data());
-    //     const mint = doc.data();
-    //     if (mint.status) fetchedMints.push(doc.data());
-    //   });
-    //   setMints(fetchedMints);
-    // }
     fetchData();
   }, []);
 
   return (
-    <TableContainer
-      component={Paper}
-      sx={{ maxHeight: '50vh', overflow: 'auto' }}
-    >
+    <TableContainer component={Paper}>
       <Table stickyHeader aria-label="customized table">
         <TableHead>
           <TableRow>
@@ -70,7 +60,7 @@ export default function MintDetails() {
             <StyledTableCell align="center">Price</StyledTableCell>
             <StyledTableCell align="center">Winners</StyledTableCell>
             <StyledTableCell align="center">Status</StyledTableCell>
-            <StyledTableCell align="center">Buy</StyledTableCell>
+            <StyledTableCell align="center">View Winners</StyledTableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -82,26 +72,22 @@ export default function MintDetails() {
               <StyledTableCell align="center">{mint.supply}</StyledTableCell>
               <StyledTableCell align="center">{mint.price}</StyledTableCell>
               <StyledTableCell align="center">{mint.winner}</StyledTableCell>
-
               <StyledTableCell align="center">
-                {mint.status ? 'Open' : 'Closed'}
+                {mint.status ? 'Open' : 'Close'}
               </StyledTableCell>
               <StyledTableCell align="center">
-                <a
-                  href={`${LOTOURL}live/${mint.link}`}
-                  target="_blank"
-                  rel="noreferrer"
+                <Button
+                  variant="outlined"
+                  size="small"
+                  sx={{
+                    padding: '2px 8px',
+                  }}
+                  onClick={() => {
+                    navigate(`/closed/${mint.id}`);
+                  }}
                 >
-                  <Button
-                    variant="outlined"
-                    size="small"
-                    sx={{
-                      padding: '2px 8px',
-                    }}
-                  >
-                    Buy
-                  </Button>
-                </a>
+                  View Winners
+                </Button>
               </StyledTableCell>
             </StyledTableRow>
           ))}

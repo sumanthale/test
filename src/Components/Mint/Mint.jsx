@@ -1,67 +1,87 @@
-import { Box, Button, Paper, Typography } from '@mui/material';
+import { Box, Button, Grid, Paper, Typography } from '@mui/material';
 import React, { useState } from 'react';
-import { useTheme } from '@mui/material/styles';
 import MintList from './MintList';
 import WinnerList from './WinnerList';
+import { doc, getDoc } from 'firebase/firestore';
+import { db } from '../../firebase/firebase';
+import { useParams } from 'react-router-dom';
 
 const Mint = () => {
-  const theme = useTheme();
-  const [mint, setMint] = useState({
-    name: 'NFT',
-    supply: '300 Supply',
-    price: '0.3 Mint Price',
-    winner: '113 Total Winners',
-    status: 'Mint Closed',
-  });
-  return (
-    <Box
-      sx={{
-        display: 'flex',
-        '& > :not(style)': {
-          m: 4,
-          width: '100vw',
-          height: 'calc(100vh - 170px)',
-        },
-      }}
-    >
-      <Paper elevation={3}>
-        <Typography
-          variant="h1"
-          component="div"
-          sx={{
-            textAlign: 'center',
-            mt: 3,
-            fontSize: '3rem',
-          }}
-          gutterBottom
-        >
-          Round 3: SOL Giveaway
-        </Typography>
+  const { id } = useParams();
+  const [mint, setMint] = useState(null);
+  React.useEffect(() => {
+    async function fetchData() {
+      if (id) {
+        const docRef = doc(db, 'mints', id);
+        const docSnap = await getDoc(docRef);
 
+        if (docSnap.exists()) {
+          setMint(docSnap.data());
+        } else {
+          console.log('No such document!');
+        }
+      }
+    }
+    fetchData();
+  }, [id]);
+  return (
+    <>
+      {id && mint && (
         <Box
           sx={{
-            p: 3,
+            display: 'flex',
+            '& > :not(style)': {
+              m: 2,
+              mx: 4,
+              width: '100vw',
+              minHeight: 'calc(100vh - 170px)',
+            },
           }}
         >
-          <Button
-            variant="outlined"
-            sx={{
-              textAlign: 'center',
-              display: 'flex',
-              justifyContent: 'center',
-              marginLeft: 'auto',
-              marginRight: 'auto',
-              marginBottom: 5,
-            }}
-          >
-            {mint.status}
-          </Button>
+          <Paper elevation={3}>
+            <Typography
+              variant="h2"
+              component="div"
+              sx={{
+                textAlign: 'center',
+                mt: 3,
+                fontSize: {
+                  xs: '1.5rem',
+                  sm: '2rem',
+                  md: '2.5rem',
+                  lg: '3rem',
+                },
+              }}
+              gutterBottom
+            >
+              {mint.category} Winners
+            </Typography>
 
-          {/* <MintList mint={mint} /> */}
-          <WinnerList />
+            <Box
+              sx={{
+                p: 3,
+              }}
+            >
+              <Grid container spacing={2}>
+                <Grid
+                  item
+                  xs={12}
+                  sm={12}
+                  md={6}
+                  align="center"
+                  justifyContent="center"
+                >
+                  <WinnerList mint={mint} />
+                </Grid>
+                <Grid item xs={12} sm={12} md={6}>
+                  <MintList winners={mint?.winners} category={mint?.category} />
+                </Grid>
+              </Grid>
+            </Box>
+          </Paper>
         </Box>
-      </Paper>
-    </Box>
+      )}
+    </>
   );
 };
 
