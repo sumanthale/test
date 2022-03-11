@@ -1,7 +1,7 @@
 import { Box, Button, Grid, Typography } from '@mui/material';
 import React from 'react';
 import { useTheme } from '@mui/material/styles';
-import Buddha from '../../assets/images/buddha.jpeg';
+import Buddha from '../../assets/images/buddha.jpg';
 import { useNavigate } from 'react-router-dom';
 const Intro = () => {
   const theme = useTheme();

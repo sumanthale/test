@@ -87,7 +87,11 @@ export default function MintDetails() {
                 {mint.status ? 'Open' : 'Closed'}
               </StyledTableCell>
               <StyledTableCell align="center">
-                <a href={`${LOTOURL}`} target="_blank" rel="noreferrer">
+                <a
+                  href={`${LOTOURL}/live/${mint.id}`}
+                  target="_blank"
+                  rel="noreferrer"
+                >
                   <Button
                     variant="outlined"
                     size="small"

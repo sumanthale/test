@@ -1,1 +1,1 @@
-export const LOTOURL = 'https://laughing-buddha-payment.netlify.app/';
+export const LOTOURL = 'https://laughing-buddha-payment.netlify.app';

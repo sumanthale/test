@@ -528,7 +528,11 @@ export default function AdminMint() {
                 <StyledTableCell align="center">{mint.price}</StyledTableCell>
                 <StyledTableCell align="center">{mint.winner}</StyledTableCell>
                 <StyledTableCell align="center">
-                  <a href={`${LOTOURL}`} target="_blank" rel="noreferrer">
+                  <a
+                    href={`${LOTOURL}/live/${mint.id}`}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
                     <Button
                       variant="outlined"
                       size="small"
