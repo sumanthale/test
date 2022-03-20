@@ -3,6 +3,7 @@ import React from "react";
 import { useTheme } from "@mui/material/styles";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
+import Buddha from "../../../assets/images/home/buddha.png";
 import "./Intro.scss";
 const Intro = () => {
   const theme = useTheme();
@@ -14,6 +15,8 @@ const Intro = () => {
         backgroundImage: `linear-gradient(0deg, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),url(${"https://s7template.com/tf/bettfor/assets/img/banner/1.png"})`,
         backgroundSize: "cover",
         backgroundPosition: "center",
+        fontFamily: "'Press Start 2P', cursive",
+        position: "relative",
       }}
     >
       <Grid
@@ -25,7 +28,6 @@ const Intro = () => {
       >
         <Grid
           item
-          // sm={12}
           md={10}
           sx={{
             display: "flex",
@@ -43,7 +45,7 @@ const Intro = () => {
               variant="h1"
               component="div"
               sx={{
-                fontSize: { md: "90px", sm: "50px" },
+                fontSize: { md: "90px" },
                 color: theme.palette.primary.main,
                 fontFamily: `inherit`,
                 width: "90%",
@@ -130,6 +132,8 @@ const Intro = () => {
           <img src={Buddha} alt="img" width="90%" />
         </Grid> */}
       </Grid>
+      <img src={Buddha} alt="img" className="image-intro" />
+
       <div className="overlay"></div>
     </Box>
   );

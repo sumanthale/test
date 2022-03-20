@@ -57,7 +57,7 @@ const About = () => {
                 component="div"
                 sx={{
                   fontSize: "60px",
-                  fontFamily: `inherit`,
+                  fontFamily: "'Press Start 2P', cursive",
                   width: "`100%",
                 }}
               >

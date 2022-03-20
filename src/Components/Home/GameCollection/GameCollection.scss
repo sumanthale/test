@@ -15,15 +15,19 @@
     margin: auto;
     margin-top: 30px;
   }
+  .img {
+    width: 100%;
+    min-height: 250px;
+    object-fit: cover;
+  }
 }
 
 .GameTypeCard {
-  background-color: black;
-  min-height: 400px;
-  border: 10px solid white;
+  min-height: 500px;
   border-radius: 10px;
-  padding: 5px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 90%;
+  padding: 12px;
 }

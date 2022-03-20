@@ -9,17 +9,21 @@ const GameCollection = () => {
     <div className="GameCollection">
       <div className="types">
         <Typography
-          variant="h4"
+          variant="h1"
           component="div"
           gutterBottom
           sx={{
             color: theme.palette.primary.main,
-            fontFamily: `inherit`,
+            fontFamily: "'Press Start 2P', cursive",
+            width: "60%",
+            marginLeft: "auto",
+            marginRight: "auto",
+            lineHeight: "1.5",
           }}
         >
-          GAMES
+          YOU ARE MOST WELCOME IN GAMING WORLD.
         </Typography>
-        <Typography
+        {/* <Typography
           variant="h1"
           component="div"
           gutterBottom
@@ -28,7 +32,7 @@ const GameCollection = () => {
           }}
         >
           TYPE OF GAMES
-        </Typography>
+        </Typography> */}
         <div className="cards">
           <Grid
             container
@@ -39,7 +43,7 @@ const GameCollection = () => {
           >
             {[1, 2, 3].map((i) => (
               <Grid item md={4} key={i}>
-                <GameTypeCard title={`Game  ${i}`} />
+                <GameTypeCard title={`Games Type ${i}`} id={i} />
               </Grid>
             ))}
           </Grid>
