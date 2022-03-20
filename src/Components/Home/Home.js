@@ -1,15 +1,14 @@
-import { Box, Paper } from '@mui/material';
-import { useTheme } from '@mui/material/styles';
-
-import React from 'react';
-import Header from '../Header/Header';
-import { ColorModeContext } from '../../themes/colorModeContext';
-import Intro from '../Intro/Intro';
+import React from "react";
+import About from "./About/About";
+import GameCollection from "./GameCollection/GameCollection";
+import Intro from "./Intro/Intro";
 
 const Home = () => {
   return (
     <>
       <Intro />
+      <About />
+      <GameCollection />
     </>
   );
 };
