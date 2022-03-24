@@ -1,10 +1,10 @@
-import { Box, Button, Grid, Paper, Typography } from '@mui/material';
-import React, { useState } from 'react';
-import MintList from './MintList';
-import WinnerList from './WinnerList';
-import { doc, getDoc } from 'firebase/firestore';
-import { db } from '../../firebase/firebase';
-import { useParams } from 'react-router-dom';
+import { Box, Button, Grid, Paper, Typography } from "@mui/material";
+import React, { useState } from "react";
+import MintList from "./MintList";
+import WinnerList from "./WinnerList";
+import { doc, getDoc } from "firebase/firestore";
+import { db } from "../../firebase/firebase";
+import { useParams } from "react-router-dom";
 
 const Mint = () => {
   const { id } = useParams();
@@ -12,13 +12,13 @@ const Mint = () => {
   React.useEffect(() => {
     async function fetchData() {
       if (id) {
-        const docRef = doc(db, 'mints', id);
+        const docRef = doc(db, "mints", id);
         const docSnap = await getDoc(docRef);
 
         if (docSnap.exists()) {
           setMint(docSnap.data());
         } else {
-          console.log('No such document!');
+          console.log("No such document!");
         }
       }
     }
@@ -29,12 +29,9 @@ const Mint = () => {
       {id && mint && (
         <Box
           sx={{
-            display: 'flex',
-            '& > :not(style)': {
-              m: 2,
-              mx: 4,
-              width: '100vw',
-              minHeight: 'calc(100vh - 170px)',
+            display: "flex",
+            "& > :not(style)": {
+              width: "100vw",
             },
           }}
         >
@@ -43,13 +40,13 @@ const Mint = () => {
               variant="h2"
               component="div"
               sx={{
-                textAlign: 'center',
+                textAlign: "center",
                 mt: 3,
                 fontSize: {
-                  xs: '1.5rem',
-                  sm: '2rem',
-                  md: '2.5rem',
-                  lg: '3rem',
+                  xs: "1.5rem",
+                  sm: "2rem",
+                  md: "2.5rem",
+                  lg: "3rem",
                 },
               }}
               gutterBottom

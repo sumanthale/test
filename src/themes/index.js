@@ -1,12 +1,12 @@
-import { createTheme } from '@mui/material/styles';
+import { createTheme } from "@mui/material/styles";
 
 // assets
-import colors from '../assets/scss/_themes-vars.module.scss';
+import colors from "../assets/scss/_themes-vars.module.scss";
 
 // project imports
-import componentStyleOverrides from './compStyleOverride';
-import themePalette from './palette';
-import themeTypography from './typography';
+import componentstyleOverrides from "./compStyleOverride";
+import themePalette from "./palette";
+import themeTypography from "./typography";
 
 export const setTheme = (mode) => {
   const themeOption = {
@@ -14,14 +14,14 @@ export const setTheme = (mode) => {
   };
 
   const themeOptions = {
-    direction: 'ltr',
+    direction: "ltr",
     palette: themePalette(themeOption),
     mixins: {
       toolbar: {
-        minHeight: '48px',
-        '@media (min-width: 600px)': {
-          minHeight: '48px',
-          padding: '10px 8vw',
+        minHeight: "48px",
+        "@media (min-width: 600px)": {
+          minHeight: "48px",
+          padding: "10px 8vw",
         },
       },
     },
@@ -29,7 +29,7 @@ export const setTheme = (mode) => {
   };
 
   const themes = createTheme(themeOptions);
-  themes.components = componentStyleOverrides(themeOption);
+  themes.components = componentstyleOverrides(themeOption);
 
   return themes;
 };
@@ -39,7 +39,7 @@ export default setTheme;
 const parseColors = (mode) => {
   const color = colors;
 
-  if (mode === 'light') {
+  if (mode === "light") {
     return {
       colors: color,
       heading: color.grey900,

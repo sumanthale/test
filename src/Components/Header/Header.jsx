@@ -1,66 +1,68 @@
-import * as React from 'react';
-import AppBar from '@mui/material/AppBar';
-import Box from '@mui/material/Box';
-import Toolbar from '@mui/material/Toolbar';
-import IconButton from '@mui/material/IconButton';
-import Typography from '@mui/material/Typography';
-import Menu from '@mui/material/Menu';
-import MenuIcon from '@mui/icons-material/Menu';
-import Container from '@mui/material/Container';
-import Avatar from '@mui/material/Avatar';
-import Button from '@mui/material/Button';
-import Tooltip from '@mui/material/Tooltip';
-import MenuItem from '@mui/material/MenuItem';
-import { Slide, useScrollTrigger, useTheme } from '@mui/material';
-import { ColorModeContext } from '../../themes/colorModeContext';
-import Brightness4Icon from '@mui/icons-material/Brightness4';
-import Brightness7Icon from '@mui/icons-material/Brightness7';
-import Twitter from '../../assets/images/twitter.gif';
-import Google from '../../assets/images/google.png';
-import Discord from '../../assets/images/discord.png';
-import { useNavigate } from 'react-router-dom';
-import { AuthContext } from '../../context/AuthContext';
-import { signIn, signOutUser } from '../../Helpers/Login';
-const pages = [
-  {
-    name: 'Home',
-    to: '/',
-    public: true,
-  },
-  {
-    name: 'Live Mints',
-    to: 'live',
-    public: true,
-  },
-  {
-    name: 'Closed Mints',
-    to: 'closed',
-    public: true,
-  },
-  // {
-  //   name: 'Pick Winners',
-  //   to: 'winners',
-  //   public: false,
-  // },
-];
+import React, { useRef, useState, useEffect } from "react";
+import TopBar from "./TopBar";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import logo from "../../assets/images/logo/logo_dark.png";
+import logo2x from "../../assets/images/logo/logo_dark.png";
+import logolight from "../../assets/images/logo/logo.png";
+import logolight2x from "../../assets/images/logo/logo.png";
+import menus from "../../pages/menu";
+import DarkMode from "./DarkMode";
+
+import icon from "../../assets/images/icon/connect-wallet.svg";
+import { ColorModeContext } from "../../themes/colorModeContext";
+import { AuthContext } from "../../context/AuthContext";
+import {
+  Avatar,
+  Box,
+  IconButton,
+  Menu,
+  MenuItem,
+  Typography,
+  Tooltip,
+} from "@mui/material";
+import { signIn, signOutUser } from "../../Helpers/Login";
+import Google from "../../assets/images/google.png";
 
 const Header = () => {
-  let navigate = useNavigate();
-  let { user } = React.useContext(AuthContext);
-  const [anchorElNav, setAnchorElNav] = React.useState(null);
-  const [anchorElUser, setAnchorElUser] = React.useState(null);
-  const theme = useTheme();
-  const colorMode = React.useContext(ColorModeContext);
-  console.log(user);
-  const handleOpenNavMenu = (event) => {
-    setAnchorElNav(event.currentTarget);
-  };
-  const handleOpenUserMenu = (event) => {
-    setAnchorElUser(event.currentTarget);
+  const { pathname } = useLocation();
+  const headerRef = useRef(null);
+  useEffect(() => {
+    window.addEventListener("scroll", isSticky);
+    return () => {
+      window.removeEventListener("scroll", isSticky);
+    };
+  });
+  const isSticky = (e) => {
+    const header = document.querySelector(".js-header");
+    const scrollTop = window.scrollY;
+
+    scrollTop >= 100
+      ? header.classList.add("is-fixed")
+      : header.classList.remove("is-fixed");
+    scrollTop >= 120
+      ? header.classList.add("is-small")
+      : header.classList.remove("is-small");
   };
 
-  const handleCloseNavMenu = () => {
-    setAnchorElNav(null);
+  const menuLeft = useRef(null);
+  const btnToggle = useRef(null);
+
+  const menuToggle = () => {
+    menuLeft.current.classList.toggle("active");
+    btnToggle.current.classList.toggle("active");
+  };
+
+  const [activeIndex, setActiveIndex] = useState(null);
+  const handleOnClick = (index) => {
+    setActiveIndex(index);
+  };
+  let { user } = React.useContext(AuthContext);
+  console.log(user);
+  const [anchorElUser, setAnchorElUser] = React.useState(null);
+  console.log(user);
+
+  const handleOpenUserMenu = (event) => {
+    setAnchorElUser(event.currentTarget);
   };
 
   const handleCloseUserMenu = () => {
@@ -68,234 +70,158 @@ const Header = () => {
   };
 
   return (
-    <HideOnScroll>
-      <AppBar position="fixed">
-        <Container maxWidth="xl">
-          <Toolbar disableGutters>
-            <Typography
-              variant="h2"
-              noWrap
-              component="div"
-              sx={{ display: { xs: 'none', md: 'flex' } }}
-            >
-              Solana Laughing Buddha
-            </Typography>
+    <div>
+      {/* <TopBar /> */}
+      <header id="header_main" className="header_1 js-header" ref={headerRef}>
+        <div className="container-fluid">
+          <div className="row">
+            <div className="col-md-12">
+              <div
+                className="mobile-button"
+                ref={btnToggle}
+                onClick={menuToggle}
+              >
+                <span></span>
+              </div>
+              <div id="site-header-inner" className="flex">
+                <div id="site-logo" className="clearfix">
+                  <div id="site-logo-inner">
+                    <Link to="/" rel="home" className="main-logo">
+                      <img
+                        id="logo_header"
+                        className="logo-dark"
+                        src={logo}
+                        srcSet={logo2x}
+                        alt="nft-gaming"
+                        style={{
+                          height: "75px",
+                          width: "75px",
+                        }}
+                      />
+                      <img
+                        id="logo_header"
+                        className="logo-light"
+                        src={logolight}
+                        srcSet={logolight2x}
+                        alt="nft-gaming"
+                        style={{
+                          height: "75px",
+                          width: "75px",
+                        }}
+                      />
+                    </Link>
+                  </div>
+                </div>
+                <form className="form-search">
+                  <input type="text" placeholder="Search here" />
+                  <button>
+                    <i className="far fa-search"></i>
+                  </button>
+                </form>
 
-            <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
-              <IconButton
-                size="large"
-                aria-label="account of current user"
-                aria-controls="menu-appbar"
-                aria-haspopup="true"
-                onClick={handleOpenNavMenu}
-                color="inherit"
-              >
-                <MenuIcon />
-              </IconButton>
-              <Menu
-                id="menu-appbar"
-                anchorEl={anchorElNav}
-                anchorOrigin={{
-                  vertical: 'bottom',
-                  horizontal: 'left',
-                }}
-                keepMounted
-                transformOrigin={{
-                  vertical: 'top',
-                  horizontal: 'left',
-                }}
-                open={Boolean(anchorElNav)}
-                onClose={handleCloseNavMenu}
-                sx={{
-                  display: { xs: 'block', md: 'none' },
-                }}
-              >
-                {pages.map((page, idx) => {
-                  if (page.public || user) {
-                    return (
+                <nav id="main-nav" className="main-nav" ref={menuLeft}>
+                  <ul id="menu-primary-menu" className="menu">
+                    {menus.map((data, index) => (
+                      <li
+                        key={index}
+                        onClick={() => handleOnClick(index)}
+                        className={`menu-item mx-1 ${
+                          data.namesub ? "menu-item-has-children" : ""
+                        }  ${activeIndex === index ? "active" : ""} `}
+                      >
+                        <Link to={data.links}>{data.name}</Link>
+                        {data.namesub && (
+                          <ul className="sub-menu">
+                            {data.namesub.map((submenu, index) => (
+                              <li
+                                key={index}
+                                className={
+                                  pathname === submenu.links
+                                    ? "menu-item current-item"
+                                    : "menu-item "
+                                }
+                              >
+                                <Link to={submenu.links}>{submenu.sub}</Link>
+                              </li>
+                            ))}
+                          </ul>
+                        )}
+                      </li>
+                    ))}
+                  </ul>
+                </nav>
+                {user ? (
+                  <Box className="mx-1">
+                    <Tooltip title="Log Out">
+                      <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+                        <Avatar alt="Admin" src={user.photoURL}>
+                          A
+                        </Avatar>
+                      </IconButton>
+                    </Tooltip>
+                    <Menu
+                      sx={{ mt: "45px" }}
+                      id="menu-appbar"
+                      anchorEl={anchorElUser}
+                      anchorOrigin={{
+                        vertical: "top",
+                        horizontal: "right",
+                      }}
+                      keepMounted
+                      transformOrigin={{
+                        vertical: "top",
+                        horizontal: "right",
+                      }}
+                      open={Boolean(anchorElUser)}
+                      onClose={handleCloseUserMenu}
+                    >
                       <MenuItem
-                        key={idx}
                         onClick={() => {
-                          handleCloseNavMenu();
-                          navigate(page.to);
+                          handleCloseUserMenu();
+                          signOutUser();
                         }}
                       >
-                        <Typography textAlign="center">{page.name}</Typography>
+                        <Typography textAlign="center">Log Out</Typography>
                       </MenuItem>
-                    );
-                  } else {
-                    return null;
-                  }
-                })}
-              </Menu>
-            </Box>
-            <Typography
-              variant="h3"
-              noWrap
-              component="div"
-              sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}
-            >
-              Solana Laughing Buddha
-            </Typography>
-
-            <Box
-              sx={{
-                flexGrow: 1,
-                display: { xs: 'none', md: 'flex' },
-                justifyContent: 'space-around',
-                'button:first-of-type': {
-                  marginLeft: 'auto',
-                },
-                'button:last-of-type': {
-                  marginRight: 'auto',
-                },
-              }}
-            >
-              {pages.map((page, idx) => {
-                if (page.public || user) {
-                  return (
-                    <Button
-                      key={idx}
-                      onClick={() => {
-                        navigate(page.to);
-                      }}
-                      size="large"
-                      sx={{
-                        my: 1,
-                        color: 'white',
-                        display: 'block',
-                        fontSize: '1rem',
-                      }}
-                    >
-                      {page.name}
-                    </Button>
-                  );
-                } else {
-                  return null;
-                }
-              })}
-            </Box>
-            <IconButton
-              sx={{ ml: 1, mr: 3 }}
-              onClick={colorMode.toggleColorMode}
-              color="inherit"
-            >
-              {theme.palette.mode === 'dark' ? (
-                <Brightness7Icon />
-              ) : (
-                <Brightness4Icon />
-              )}
-            </IconButton>
-            <Box
-              sx={{
-                display: { xs: 'none', md: 'flex' },
-              }}
-            >
-              <a
-                href="https://twitter.com/SolaughBuddha"
-                target="_blank"
-                rel="noreferrer"
-              >
-                <img
-                  src={Twitter}
-                  alt="img"
-                  width="40px"
-                  height="40px"
-                  style={{
-                    borderRadius: '50%',
-                    marginRight: '15px',
-                    cursor: 'pointer',
-                  }}
-                />
-              </a>
-
-              <a
-                href="https://discord.com/invite/epvVaY4bMr"
-                target="_blank"
-                rel="noreferrer"
-              >
-                <img
-                  src={Discord}
-                  alt="img"
-                  width="40px"
-                  height="40px"
-                  style={{
-                    borderRadius: '50%',
-                    marginRight: '15px',
-                    cursor: 'pointer',
-                  }}
-                />
-              </a>
-            </Box>
-            {user ? (
-              <Box sx={{ flexGrow: 0 }}>
-                <Tooltip title="Log Out">
-                  <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                    <Avatar alt="Remy Sharp" src={user.photoURL} />
-                  </IconButton>
-                </Tooltip>
-                <Menu
-                  sx={{ mt: '45px' }}
-                  id="menu-appbar"
-                  anchorEl={anchorElUser}
-                  anchorOrigin={{
-                    vertical: 'top',
-                    horizontal: 'right',
-                  }}
-                  keepMounted
-                  transformOrigin={{
-                    vertical: 'top',
-                    horizontal: 'right',
-                  }}
-                  open={Boolean(anchorElUser)}
-                  onClose={handleCloseUserMenu}
-                >
-                  <MenuItem
-                    onClick={() => {
-                      handleCloseUserMenu();
-                      signOutUser();
-                    }}
+                    </Menu>
+                  </Box>
+                ) : (
+                  <Box className="mx-1">
+                    <Tooltip title="Admin Login">
+                      <IconButton
+                        onClick={() => {
+                          signIn();
+                        }}
+                        sx={{ p: 0 }}
+                      >
+                        <Avatar
+                          alt="Remy Sharp"
+                          src={Google}
+                          sx={{
+                            backgroundColor: "transparent",
+                          }}
+                        />
+                      </IconButton>
+                    </Tooltip>
+                  </Box>
+                )}
+                <DarkMode />
+                <div className="button-connect-wallet ml-3">
+                  <Link
+                    to="/connect-wallet"
+                    className="sc-button wallet   style-2"
                   >
-                    <Typography textAlign="center">Log Out</Typography>
-                  </MenuItem>
-                </Menu>
-              </Box>
-            ) : (
-              <Box sx={{ flexGrow: 0 }}>
-                <Tooltip title="Admin Login">
-                  <IconButton
-                    onClick={() => {
-                      signIn();
-                    }}
-                    sx={{ p: 0 }}
-                  >
-                    <Avatar
-                      alt="Remy Sharp"
-                      src={Google}
-                      sx={{
-                        backgroundColor: 'transparent',
-                      }}
-                    />
-                  </IconButton>
-                </Tooltip>
-              </Box>
-            )}
-          </Toolbar>
-        </Container>
-      </AppBar>
-    </HideOnScroll>
+                    <img src={icon} alt="icon" />
+                    <span>Connect Wallet</span>
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+    </div>
   );
 };
-export default Header;
 
-function HideOnScroll(props) {
-  const { children, window } = props;
-  const trigger = useScrollTrigger({
-    target: window ? window() : undefined,
-  });
-  return (
-    <Slide appear={false} direction="down" in={!trigger}>
-      {children}
-    </Slide>
-  );
-}
+export default Header;

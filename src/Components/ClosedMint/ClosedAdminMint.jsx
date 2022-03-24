@@ -1,12 +1,12 @@
-import * as React from 'react';
-import { styled } from '@mui/material/styles';
-import Table from '@mui/material/Table';
-import TableBody from '@mui/material/TableBody';
-import TableCell, { tableCellClasses } from '@mui/material/TableCell';
-import TableContainer from '@mui/material/TableContainer';
-import TableHead from '@mui/material/TableHead';
-import TableRow from '@mui/material/TableRow';
-import Paper from '@mui/material/Paper';
+import * as React from "react";
+import { styled } from "@mui/material/styles";
+import Table from "@mui/material/Table";
+import TableBody from "@mui/material/TableBody";
+import TableCell, { tableCellClasses } from "@mui/material/TableCell";
+import TableContainer from "@mui/material/TableContainer";
+import TableHead from "@mui/material/TableHead";
+import TableRow from "@mui/material/TableRow";
+import Paper from "@mui/material/Paper";
 import {
   Box,
   Button,
@@ -18,21 +18,21 @@ import {
   Select,
   TextField,
   Typography,
-} from '@mui/material';
-import { useNavigate } from 'react-router-dom';
-import { useTheme } from '@mui/material/styles';
-import uniqid from 'uniqid';
-import produce from 'immer';
+} from "@mui/material";
+import { useNavigate } from "react-router-dom";
+import { useTheme } from "@mui/material/styles";
+import uniqid from "uniqid";
+import produce from "immer";
 
-import { errorToast, successToast } from '../../Helpers/toast';
+import { errorToast, successToast } from "../../Helpers/toast";
 import {
   collection,
   deleteDoc,
   doc,
   getDocs,
   setDoc,
-} from 'firebase/firestore';
-import { db } from '../../firebase/firebase';
+} from "firebase/firestore";
+import { db } from "../../firebase/firebase";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -45,11 +45,11 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
 }));
 
 const StyledTableRow = styled(TableRow)(({ theme }) => ({
-  '&:nth-of-type(odd)': {
+  "&:nth-of-type(odd)": {
     backgroundColor: theme.palette.action.hover,
   },
   // hide last border
-  '&:last-child td, &:last-child th': {
+  "&:last-child td, &:last-child th": {
     border: 0,
   },
 }));
@@ -59,20 +59,20 @@ export default function ClosedAdminMint() {
 
   const [mints, setMints] = React.useState([]);
   const [open, setOpen] = React.useState(false);
-  const [mintID, setMintID] = React.useState('');
-  const [category, setCategory] = React.useState('');
-  const [supply, setSupply] = React.useState('');
-  const [price, setPrice] = React.useState('');
-  const [winner, setWinner] = React.useState('');
+  const [mintID, setMintID] = React.useState("");
+  const [category, setCategory] = React.useState("");
+  const [supply, setSupply] = React.useState("");
+  const [price, setPrice] = React.useState("");
+  const [winner, setWinner] = React.useState("");
   const [status, setStatus] = React.useState(false);
   const [newMint, setNewMint] = React.useState(false);
   React.useEffect(() => {
     const fetchedMints = [];
 
     async function fetchData() {
-      const querySnapshot = await getDocs(collection(db, 'mints'));
+      const querySnapshot = await getDocs(collection(db, "mints"));
       querySnapshot.forEach((doc) => {
-        console.log(doc.id, ' => ', doc.data());
+        console.log(doc.id, " => ", doc.data());
         fetchedMints.push(doc.data());
       });
       setMints(fetchedMints);
@@ -97,13 +97,13 @@ export default function ClosedAdminMint() {
   };
   const handelClickDelete = async (id) => {
     try {
-      await deleteDoc(doc(db, 'mints', id));
+      await deleteDoc(doc(db, "mints", id));
       const filtered = mints.filter((mint) => mint.id !== id);
       setMints(filtered);
 
-      successToast('Mint Deleted Successfully!! 🎉🎉');
+      successToast("Mint Deleted Successfully!! 🎉🎉");
     } catch (err) {
-      errorToast('Something went wrong 😥');
+      errorToast("Something went wrong 😥");
     }
   };
 
@@ -128,13 +128,13 @@ export default function ClosedAdminMint() {
     };
     console.log(mintID);
     try {
-      const mintRef = doc(db, 'mints', mintID);
+      const mintRef = doc(db, "mints", mintID);
 
       await setDoc(mintRef, mint, { merge: true });
-      successToast('Mint Edited Successfully!! 🎉🎉');
+      successToast("Mint Edited Successfully!! 🎉🎉");
     } catch (err) {
       console.log(err);
-      errorToast('Something went wrong 😥');
+      errorToast("Something went wrong 😥");
     }
 
     reset();
@@ -166,12 +166,12 @@ export default function ClosedAdminMint() {
       winnersList: [],
     };
     try {
-      const mintRef = doc(db, 'mints', mint.id);
+      const mintRef = doc(db, "mints", mint.id);
 
       await setDoc(mintRef, mint);
-      successToast('Mint Created Successfully!! 🎉🎉');
+      successToast("Mint Created Successfully!! 🎉🎉");
     } catch (err) {
-      errorToast('Something went wrong 😥');
+      errorToast("Something went wrong 😥");
     }
 
     handleClose();
@@ -182,12 +182,12 @@ export default function ClosedAdminMint() {
   const navigate = useNavigate();
 
   const reset = () => {
-    setMintID('');
-    setCategory('');
-    setSupply('');
-    setPrice('');
-    setWinner('');
-    setStatus('');
+    setMintID("");
+    setCategory("");
+    setSupply("");
+    setPrice("");
+    setWinner("");
+    setStatus("");
   };
 
   const handleOpen = () => setOpen(true);
@@ -211,13 +211,13 @@ export default function ClosedAdminMint() {
         >
           <Box
             sx={{
-              position: 'absolute',
-              top: '50%',
-              left: '50%',
-              transform: 'translate(-50%, -50%)',
-              minWidth: '70vw',
-              bgcolor: 'background.paper',
-              border: '2px solid #000',
+              position: "absolute",
+              top: "50%",
+              left: "50%",
+              transform: "translate(-50%, -50%)",
+              minWidth: "70vw",
+              bgcolor: "background.paper",
+              border: "2px solid #000",
               boxShadow: 24,
               p: 4,
             }}
@@ -244,13 +244,13 @@ export default function ClosedAdminMint() {
                   required
                   sx={{
                     mb: 3,
-                    width: '100%',
-                    left: '50%',
-                    transform: 'translateX(-50%)',
-                    '& > .MuiOutlinedInput-root': {
+                    width: "100%",
+                    left: "50%",
+                    transform: "translateX(-50%)",
+                    "& > .MuiOutlinedInput-root": {
                       background: theme.palette.background.default,
                     },
-                    '& input': {
+                    "& input": {
                       background: theme.palette.background.default,
                     },
                   }}
@@ -268,13 +268,13 @@ export default function ClosedAdminMint() {
                   required
                   sx={{
                     mb: 3,
-                    width: '100%',
-                    left: '50%',
-                    transform: 'translateX(-50%)',
-                    '& > .MuiOutlinedInput-root': {
+                    width: "100%",
+                    left: "50%",
+                    transform: "translateX(-50%)",
+                    "& > .MuiOutlinedInput-root": {
                       background: theme.palette.background.default,
                     },
-                    '& input': {
+                    "& input": {
                       background: theme.palette.background.default,
                     },
                   }}
@@ -292,13 +292,13 @@ export default function ClosedAdminMint() {
                   required
                   sx={{
                     mb: 3,
-                    width: '100%',
-                    left: '50%',
-                    transform: 'translateX(-50%)',
-                    '& > .MuiOutlinedInput-root': {
+                    width: "100%",
+                    left: "50%",
+                    transform: "translateX(-50%)",
+                    "& > .MuiOutlinedInput-root": {
                       background: theme.palette.background.default,
                     },
-                    '& input': {
+                    "& input": {
                       background: theme.palette.background.default,
                     },
                   }}
@@ -316,13 +316,13 @@ export default function ClosedAdminMint() {
                   required
                   sx={{
                     mb: 3,
-                    width: '100%',
-                    left: '50%',
-                    transform: 'translateX(-50%)',
-                    '& > .MuiOutlinedInput-root': {
+                    width: "100%",
+                    left: "50%",
+                    transform: "translateX(-50%)",
+                    "& > .MuiOutlinedInput-root": {
                       background: theme.palette.background.default,
                     },
-                    '& input': {
+                    "& input": {
                       background: theme.palette.background.default,
                     },
                   }}
@@ -342,13 +342,13 @@ export default function ClosedAdminMint() {
                     required
                     sx={{
                       mb: 3,
-                      width: '100%',
-                      left: '50%',
-                      transform: 'translateX(-50%)',
-                      '& > .MuiOutlinedInput-root': {
+                      width: "100%",
+                      left: "50%",
+                      transform: "translateX(-50%)",
+                      "& > .MuiOutlinedInput-root": {
                         background: theme.palette.background.default,
                       },
-                      '& > .MuiSelect-select ': {
+                      "& > .MuiSelect-select ": {
                         background: theme.palette.background.default,
                       },
                     }}
@@ -362,7 +362,7 @@ export default function ClosedAdminMint() {
 
             <Box id="modal-modal-description" sx={{ mt: 2 }}>
               <Button type="submit" variant="outlined" color="success">
-                {newMint ? 'Create Mint' : 'Edit Mint'}
+                {newMint ? "Create Mint" : "Edit Mint"}
               </Button>
             </Box>
           </Box>
@@ -371,7 +371,7 @@ export default function ClosedAdminMint() {
 
       <TableContainer
         component={Paper}
-        sx={{ maxHeight: '50vh', overflow: 'auto' }}
+        sx={{ maxHeight: "50vh", overflow: "auto" }}
       >
         <Table stickyHeader aria-label="customized table">
           <TableHead>
@@ -395,7 +395,7 @@ export default function ClosedAdminMint() {
                     size="small"
                     color="secondary"
                     sx={{
-                      padding: '2px 8px',
+                      padding: "2px 8px",
                     }}
                     onClick={() => {
                       handelClickEdit(mint);
@@ -413,14 +413,14 @@ export default function ClosedAdminMint() {
                 <StyledTableCell align="center">{mint.price}</StyledTableCell>
                 <StyledTableCell align="center">{mint.winner}</StyledTableCell>
                 <StyledTableCell align="center">
-                  {mint.status ? 'Open' : 'Close'}
+                  {mint.status ? "Open" : "Closed"}
                 </StyledTableCell>
                 <StyledTableCell align="center">
                   <Button
                     variant="outlined"
                     size="small"
                     sx={{
-                      padding: '2px 8px',
+                      padding: "2px 8px",
                     }}
                     onClick={() => {
                       navigate(`/winners/${mint.id}`);
@@ -434,7 +434,7 @@ export default function ClosedAdminMint() {
                     variant="outlined"
                     size="small"
                     sx={{
-                      padding: '2px 8px',
+                      padding: "2px 8px",
                     }}
                     color="error"
                     onClick={() => {

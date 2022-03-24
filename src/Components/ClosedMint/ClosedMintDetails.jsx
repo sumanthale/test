@@ -1,16 +1,16 @@
-import * as React from 'react';
-import { styled } from '@mui/material/styles';
-import Table from '@mui/material/Table';
-import TableBody from '@mui/material/TableBody';
-import TableCell, { tableCellClasses } from '@mui/material/TableCell';
-import TableContainer from '@mui/material/TableContainer';
-import TableHead from '@mui/material/TableHead';
-import TableRow from '@mui/material/TableRow';
-import Paper from '@mui/material/Paper';
-import { Button } from '@mui/material';
-import { collection, getDocs, query, where } from 'firebase/firestore';
-import { db } from '../../firebase/firebase';
-import { useNavigate } from 'react-router-dom';
+import * as React from "react";
+import { styled } from "@mui/material/styles";
+import Table from "@mui/material/Table";
+import TableBody from "@mui/material/TableBody";
+import TableCell, { tableCellClasses } from "@mui/material/TableCell";
+import TableContainer from "@mui/material/TableContainer";
+import TableHead from "@mui/material/TableHead";
+import TableRow from "@mui/material/TableRow";
+import Paper from "@mui/material/Paper";
+import { Button } from "@mui/material";
+import { collection, getDocs, query, where } from "firebase/firestore";
+import { db } from "../../firebase/firebase";
+import { useNavigate } from "react-router-dom";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -23,11 +23,11 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
 }));
 
 const StyledTableRow = styled(TableRow)(({ theme }) => ({
-  '&:nth-of-type(odd)': {
+  "&:nth-of-type(odd)": {
     backgroundColor: theme.palette.action.hover,
   },
   // hide last border
-  '&:last-child td, &:last-child th': {
+  "&:last-child td, &:last-child th": {
     border: 0,
   },
 }));
@@ -39,10 +39,10 @@ export default function ClosedMintDetails() {
     const fetchedMints = [];
 
     async function fetchData() {
-      const q = query(collection(db, 'mints'), where('status', '==', false));
+      const q = query(collection(db, "mints"), where("status", "==", false));
       const querySnapshot = await getDocs(q);
       querySnapshot.forEach((doc) => {
-        fetchedMints.push(doc.data());
+        fetchedMints.unshift(doc.data());
       });
 
       setMints(fetchedMints);
@@ -51,7 +51,12 @@ export default function ClosedMintDetails() {
   }, []);
 
   return (
-    <TableContainer component={Paper}>
+    <TableContainer
+      component={Paper}
+      style={{
+        maxHeight: "50vh",
+      }}
+    >
       <Table stickyHeader aria-label="customized table">
         <TableHead>
           <TableRow>
@@ -73,14 +78,14 @@ export default function ClosedMintDetails() {
               <StyledTableCell align="center">{mint.price}</StyledTableCell>
               <StyledTableCell align="center">{mint.winner}</StyledTableCell>
               <StyledTableCell align="center">
-                {mint.status ? 'Open' : 'Close'}
+                {mint.status ? "Open" : "Closed"}
               </StyledTableCell>
               <StyledTableCell align="center">
                 <Button
                   variant="outlined"
                   size="small"
                   sx={{
-                    padding: '2px 8px',
+                    padding: "2px 8px",
                   }}
                   onClick={() => {
                     navigate(`/closed/${mint.id}`);

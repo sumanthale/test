@@ -19,14 +19,11 @@ body {
   margin: 0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  font-family: "Exo", sans-serif;
+  /* font-family: "Exo", sans-serif; */
 }
 
-.Intro {
-  /* background-image: url(https://monztera.1onestrong.com/wp-content/uploads/sites/3/2021/12/monterajpg03.jpg); */
-}
 ::-webkit-scrollbar {
-  width: 0px;
+  width: 5px;
   height: 2px;
 }
 
@@ -53,4 +50,8 @@ body {
   .MuiAlert-message .MuiTypography-root {
     font-size: 2vw;
   }
+}
+input:focus,
+textarea:focus {
+  border: none !important;
 }

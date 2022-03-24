@@ -1,16 +1,16 @@
-import * as React from 'react';
-import { styled } from '@mui/material/styles';
-import Table from '@mui/material/Table';
-import TableBody from '@mui/material/TableBody';
-import TableCell, { tableCellClasses } from '@mui/material/TableCell';
-import TableContainer from '@mui/material/TableContainer';
-import TableHead from '@mui/material/TableHead';
-import TableRow from '@mui/material/TableRow';
-import Paper from '@mui/material/Paper';
-import { Button } from '@mui/material';
-import { collection, getDocs, query, where } from 'firebase/firestore';
-import { db } from '../../firebase/firebase';
-import { LOTOURL } from '../../Helpers/default';
+import * as React from "react";
+import { styled } from "@mui/material/styles";
+import Table from "@mui/material/Table";
+import TableBody from "@mui/material/TableBody";
+import TableCell, { tableCellClasses } from "@mui/material/TableCell";
+import TableContainer from "@mui/material/TableContainer";
+import TableHead from "@mui/material/TableHead";
+import TableRow from "@mui/material/TableRow";
+import Paper from "@mui/material/Paper";
+import { Button } from "@mui/material";
+import { collection, getDocs, query, where } from "firebase/firestore";
+import { db } from "../../firebase/firebase";
+import { LOTOURL } from "../../Helpers/default";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -23,11 +23,11 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
 }));
 
 const StyledTableRow = styled(TableRow)(({ theme }) => ({
-  '&:nth-of-type(odd)': {
+  "&:nth-of-type(odd)": {
     backgroundColor: theme.palette.action.hover,
   },
   // hide last border
-  '&:last-child td, &:last-child th': {
+  "&:last-child td, &:last-child th": {
     border: 0,
   },
 }));
@@ -37,7 +37,7 @@ export default function MintDetails() {
   React.useEffect(() => {
     const fetchedMints = [];
     async function fetchData() {
-      const q = query(collection(db, 'mints'), where('status', '==', true));
+      const q = query(collection(db, "mints"), where("status", "==", true));
       const querySnapshot = await getDocs(q);
       querySnapshot.forEach((doc) => {
         fetchedMints.push(doc.data());
@@ -60,7 +60,7 @@ export default function MintDetails() {
   return (
     <TableContainer
       component={Paper}
-      sx={{ maxHeight: '50vh', overflow: 'auto' }}
+      sx={{ maxHeight: "50vh", overflow: "auto", fontSize: "100%" }}
     >
       <Table stickyHeader aria-label="customized table">
         <TableHead>
@@ -84,7 +84,7 @@ export default function MintDetails() {
               <StyledTableCell align="center">{mint.winner}</StyledTableCell>
 
               <StyledTableCell align="center">
-                {mint.status ? 'Open' : 'Closed'}
+                {mint.status ? "Open" : "Closed"}
               </StyledTableCell>
               <StyledTableCell align="center">
                 <a
@@ -96,7 +96,7 @@ export default function MintDetails() {
                     variant="outlined"
                     size="small"
                     sx={{
-                      padding: '2px 8px',
+                      padding: "2px 8px",
                     }}
                   >
                     Buy

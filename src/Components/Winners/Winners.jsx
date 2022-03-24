@@ -10,37 +10,37 @@ import {
   Select,
   TextField,
   Typography,
-} from '@mui/material';
-import React, { useEffect, useState } from 'react';
-import { useTheme } from '@mui/material/styles';
-import { toast } from 'react-toastify';
-import { useNavigate, useParams } from 'react-router-dom';
-import { collection, doc, getDoc, getDocs, setDoc } from 'firebase/firestore';
-import { db } from '../../firebase/firebase';
-import { errorToast, successToast } from '../../Helpers/toast';
-import Loader from '../../Helpers/Loader';
+} from "@mui/material";
+import React, { useEffect, useState } from "react";
+import { useTheme } from "@mui/material/styles";
+import { toast } from "react-toastify";
+import { useNavigate, useParams } from "react-router-dom";
+import { collection, doc, getDoc, getDocs, setDoc } from "firebase/firestore";
+import { db } from "../../firebase/firebase";
+import { errorToast, successToast } from "../../Helpers/toast";
+import Loader from "../../Helpers/Loader";
 
 const colors = [
-  'success',
-  'success',
-  'info',
-  'warning',
-  'error',
-  'success',
-  'info',
-  'warning',
-  'error',
-  'success',
-  'info',
-  'warning',
-  'error',
+  "success",
+  "success",
+  "info",
+  "warning",
+  "error",
+  "success",
+  "info",
+  "warning",
+  "error",
+  "success",
+  "info",
+  "warning",
+  "error",
 ];
 const Winner = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const theme = useTheme();
-  const [value, setValue] = React.useState('');
-  const [pick, setPick] = useState('');
+  const [value, setValue] = React.useState("");
+  const [pick, setPick] = useState("");
   const [pickedValues, setPickedValues] = useState([]);
   const [mint, setMint] = useState(null);
 
@@ -50,19 +50,19 @@ const Winner = () => {
 
   useEffect(() => {
     async function fetchData() {
-      const docRef = doc(db, 'mints', `${id}`);
+      const docRef = doc(db, "mints", `${id}`);
       const docSnap = await getDoc(docRef);
 
       if (docSnap.exists()) {
-        console.log('Document data:', docSnap.data());
+        console.log("Document data:", docSnap.data());
         const { participants } = docSnap.data();
         setMint(docSnap.data());
         const people = participants.map(
           ({ publicKey, token }) => `#${token}🗝${publicKey}`
         );
-        setValue(people.join(',\n'));
+        setValue(people.join(",\n"));
       } else {
-        navigate('/live');
+        navigate("/live");
       }
     }
     if (id) {
@@ -80,8 +80,8 @@ const Winner = () => {
     e.preventDefault();
     if (value) {
       const members = value
-        .replace(/\s+\r?\n|\r| /g, '')
-        .split(',')
+        .replace(/\s+\r?\n|\r| /g, "")
+        .split(",")
         .filter((el) => !!el)
         .map((el) => ({ id: el }));
       setMembers(members);
@@ -105,10 +105,10 @@ const Winner = () => {
       setMembers(copyMembers);
       setWinners(copyWinners);
       setPickedValues((state) => [...state, pick]);
-      setPick('');
+      setPick("");
     } else {
-      toast.error('🙅 Please Check Pick Value', {
-        position: 'top-right',
+      toast.error("🙅 Please Check Pick Value", {
+        position: "top-right",
         autoClose: 5000,
         hideProgressBar: false,
         closeOnClick: true,
@@ -120,7 +120,7 @@ const Winner = () => {
   };
   const onSuccessfullPick = async () => {
     try {
-      const mintRef = doc(db, 'mints', mint.id);
+      const mintRef = doc(db, "mints", mint.id);
 
       await setDoc(
         mintRef,
@@ -130,11 +130,11 @@ const Winner = () => {
         },
         { merge: true }
       );
-      successToast('Winners Picked Successfully!! 🎉🎉');
-      navigate('/closed');
+      successToast("Winners Picked Successfully!! 🎉🎉");
+      navigate("/closed");
     } catch (err) {
       console.log(err);
-      errorToast('Something went wrong 😥');
+      errorToast("Something went wrong 😥");
     }
   };
 
@@ -148,25 +148,18 @@ const Winner = () => {
       {mint ? (
         <Box
           sx={{
-            position: 'relative',
-            display: 'flex',
-            '& > :not(style)': {
-              m: { xs: 0, sm: 0, md: 1 },
-              mx: 2,
-              width: '100vw',
-              minHeight: {
-                xs: 'calc(100vh - 110px)',
-                sm: 'calc(100vh - 110px)',
-                md: 'calc(100vh - 180px)',
-              },
+            position: "relative",
+            display: "flex",
+            "& > :not(style)": {
+              width: "100vw",
             },
           }}
         >
           <Paper
             elevation={3}
             sx={{
-              display: 'flex',
-              flexDirection: 'column',
+              display: "flex",
+              flexDirection: "column",
               p: { xs: 1, sm: 1, md: 3 },
             }}
           >
@@ -174,8 +167,8 @@ const Winner = () => {
               variant="h1"
               component="div"
               sx={{
-                textAlign: 'center',
-                fontSize: { xs: '1.5rem', sm: '1.5rem', md: '3rem' },
+                textAlign: "center",
+                fontSize: { xs: "1.5rem", sm: "1.5rem", md: "3rem" },
                 color: theme.palette.primary.main,
               }}
               gutterBottom
@@ -187,10 +180,10 @@ const Winner = () => {
                 <Button
                   variant="outlined"
                   sx={{
-                    minWidth: '10vw',
-                    position: 'absolute',
-                    right: '5%',
-                    top: '7.5%',
+                    minWidth: "10vw",
+                    position: "absolute",
+                    right: "5%",
+                    top: "7.5%",
                     zIndex: 999,
                   }}
                   onClick={reset}
@@ -202,7 +195,7 @@ const Winner = () => {
                   //   alignItems="center"
                   container
                   sx={{
-                    position: 'relative',
+                    position: "relative",
                   }}
                   spacing={{ xs: 3, md: 2 }}
                 >
@@ -224,10 +217,10 @@ const Winner = () => {
                       xs={12}
                       spacing={1}
                       sx={{
-                        maxHeight: { sm: '35vh', md: '65vh' },
-                        minHeight: { sm: '35vh', md: '65vh' },
-                        overflow: 'auto',
-                        position: 'relative',
+                        maxHeight: { sm: "35vh", md: "65vh" },
+                        minHeight: { sm: "35vh", md: "65vh" },
+                        overflow: "auto",
+                        position: "relative",
                       }}
                     >
                       {members.map((item, idx) => (
@@ -247,11 +240,11 @@ const Winner = () => {
                     md={2}
                     spacing={2}
                     sx={{
-                      maxHeight: { sm: '10vh', md: '100%' },
-                      minHeight: { sm: '10vh', md: '100%' },
-                      overflow: 'auto',
-                      display: 'flex',
-                      alignContent: 'center',
+                      maxHeight: { sm: "10vh", md: "100%" },
+                      minHeight: { sm: "10vh", md: "100%" },
+                      overflow: "auto",
+                      display: "flex",
+                      alignContent: "center",
                     }}
                   >
                     <Grid item xs={6} md={12}>
@@ -267,10 +260,10 @@ const Winner = () => {
                           inputProps: { min: 1, max: members.length },
                         }}
                         sx={{
-                          '& > .MuiOutlinedInput-root': {
+                          "& > .MuiOutlinedInput-root": {
                             background: theme.palette.background.default,
                           },
-                          '& input': {
+                          "& input": {
                             background: theme.palette.background.default,
                           },
                         }}
@@ -281,9 +274,9 @@ const Winner = () => {
                       xs={3}
                       md={12}
                       sx={{
-                        display: 'flex',
-                        justifyContent: 'space-evenly',
-                        alignItems: 'center',
+                        display: "flex",
+                        justifyContent: "space-evenly",
+                        alignItems: "center",
                       }}
                     >
                       <Button
@@ -301,9 +294,9 @@ const Winner = () => {
                       xs={3}
                       md={12}
                       sx={{
-                        display: 'flex',
-                        justifyContent: 'space-evenly',
-                        alignItems: 'center',
+                        display: "flex",
+                        justifyContent: "space-evenly",
+                        alignItems: "center",
                       }}
                     >
                       <Button
@@ -334,9 +327,9 @@ const Winner = () => {
                       container
                       xs={12}
                       sx={{
-                        maxHeight: { sm: '35vh', md: '65vh' },
-                        minHeight: { sm: '35vh', md: '65vh' },
-                        overflow: 'auto',
+                        maxHeight: { sm: "35vh", md: "65vh" },
+                        minHeight: { sm: "35vh", md: "65vh" },
+                        overflow: "auto",
                       }}
                       spacing={2}
                     >
@@ -354,7 +347,7 @@ const Winner = () => {
                             >
                               {item.id}
                             </Typography>
-                            <div style={{ textAlign: 'center' }}>
+                            <div style={{ textAlign: "center" }}>
                               <Typography
                                 variant="h6"
                                 component="span"
@@ -390,20 +383,20 @@ const Winner = () => {
                   onChange={handleChange}
                   sx={{
                     mb: 3,
-                    width: '100%',
-                    left: '50%',
-                    transform: 'translateX(-50%)',
-                    '& > .MuiOutlinedInput-root': {
+                    width: "100%",
+                    left: "50%",
+                    transform: "translateX(-50%)",
+                    "& > .MuiOutlinedInput-root": {
                       background: theme.palette.background.default,
                     },
-                    '& textarea': {
+                    "& textarea": {
                       background: theme.palette.background.default,
                     },
                   }}
                 />
                 <Button
                   variant="outlined"
-                  sx={{ maxWidth: '10vw' }}
+                  sx={{ maxWidth: "10vw" }}
                   onClick={(e) => handelDataSubmit(e)}
                   type="submit"
                   size="medium"
