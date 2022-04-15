@@ -206,7 +206,7 @@ const Header = () => {
                   </Box>
                 )}
                 <DarkMode />
-                <div className="button-connect-wallet ml-3">
+                {/* <div className="button-connect-wallet ml-3">
                   <Link
                     to="/connect-wallet"
                     className="sc-button wallet   style-2"
@@ -214,7 +214,7 @@ const Header = () => {
                     <img src={icon} alt="icon" />
                     <span>Connect Wallet</span>
                   </Link>
-                </div>
+                </div> */}
               </div>
             </div>
           </div>

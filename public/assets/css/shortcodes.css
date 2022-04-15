@@ -2452,8 +2452,9 @@ blockquote .author::before {
   left: 0;
   /* background: url("../images/background/bg-slider.png") center center no-repeat;
    */
-  background: url("https://s7template.com/tf/bettfor/assets/img/banner/1.png")
-    center center no-repeat;
+  /* background: url("https://s7template.com/tf/bettfor/assets/img/banner/1.png")
+    center center no-repeat; */
+  background-image: linear-gradient(132.41deg, #6345ed 18.03%, #dc39fc 81.29%);
   z-index: -1;
 }
 

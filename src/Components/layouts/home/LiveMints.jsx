@@ -56,7 +56,7 @@ const LiveAution = (props) => {
                   >
                     {data.map((item, index) => (
                       <SwiperSlide key={index}>
-                        <LiveAutionItem item={item} />
+                        <LiveAutionItem item={item} index={index} />
                       </SwiperSlide>
                     ))}
                   </Swiper>
@@ -71,7 +71,12 @@ const LiveAution = (props) => {
 };
 
 const LiveAutionItem = (props) => (
-  <div className="swiper-slide">
+  <div
+    className="swiper-slide"
+    style={{
+      display: props.index === 0 ? "block" : "none",
+    }}
+  >
     <div className="slider-item">
       <div className="sc-product-item p-1">
         <div className="product-img">
@@ -113,52 +118,3 @@ const LiveAutionItem = (props) => (
 );
 
 export default LiveAution;
-
-const getBreakpoints = (len) => {
-  if (len > 4)
-    return {
-      0: {
-        slidesPerView: 1,
-      },
-      767: {
-        slidesPerView: 2,
-      },
-      991: {
-        slidesPerView: 3,
-      },
-      1300: {
-        slidesPerView: 4,
-      },
-    };
-  else if (len === 3) {
-    return {
-      0: {
-        slidesPerView: 1,
-      },
-      767: {
-        slidesPerView: 2,
-      },
-      991: {
-        slidesPerView: 3,
-      },
-      1300: {
-        slidesPerView: 3,
-      },
-    };
-  } else if (len === 2) {
-    return {
-      0: {
-        slidesPerView: 1,
-      },
-      767: {
-        slidesPerView: 2,
-      },
-      991: {
-        slidesPerView: 2,
-      },
-      1300: {
-        slidesPerView: 2,
-      },
-    };
-  }
-};
