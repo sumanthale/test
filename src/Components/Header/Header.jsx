@@ -1,14 +1,13 @@
 import React, { useRef, useState, useEffect } from "react";
 import TopBar from "./TopBar";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import logo from "../../assets/images/logo/logo_dark.png";
+import logo from "../../assets/elves/logo.png";
 import logo2x from "../../assets/images/logo/logo_dark.png";
 import logolight from "../../assets/images/logo/logo.png";
 import logolight2x from "../../assets/images/logo/logo.png";
 import menus from "../../pages/menu";
 import DarkMode from "./DarkMode";
 
-import icon from "../../assets/images/icon/connect-wallet.svg";
 import { ColorModeContext } from "../../themes/colorModeContext";
 import { AuthContext } from "../../context/AuthContext";
 import {
@@ -57,9 +56,7 @@ const Header = () => {
     setActiveIndex(index);
   };
   let { user } = React.useContext(AuthContext);
-  console.log(user);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
-  console.log(user);
 
   const handleOpenUserMenu = (event) => {
     setAnchorElUser(event.currentTarget);
@@ -91,63 +88,78 @@ const Header = () => {
                         id="logo_header"
                         className="logo-dark"
                         src={logo}
-                        srcSet={logo2x}
                         alt="nft-gaming"
                         style={{
-                          height: "75px",
-                          width: "75px",
+                          width: "220px",
                         }}
                       />
                       <img
                         id="logo_header"
                         className="logo-light"
-                        src={logolight}
-                        srcSet={logolight2x}
+                        src={logo}
                         alt="nft-gaming"
                         style={{
-                          height: "75px",
-                          width: "75px",
+                          width: "220px",
                         }}
                       />
                     </Link>
                   </div>
                 </div>
-                <form className="form-search">
+                {/* <form className="form-search">
                   <input type="text" placeholder="Search here" />
                   <button>
                     <i className="far fa-search"></i>
                   </button>
-                </form>
+                </form> */}
 
                 <nav id="main-nav" className="main-nav" ref={menuLeft}>
                   <ul id="menu-primary-menu" className="menu">
-                    {menus.map((data, index) => (
-                      <li
-                        key={index}
-                        onClick={() => handleOnClick(index)}
-                        className={`menu-item mx-1 ${
-                          data.namesub ? "menu-item-has-children" : ""
-                        }  ${activeIndex === index ? "active" : ""} `}
-                      >
-                        <Link to={data.links}>{data.name}</Link>
-                        {data.namesub && (
-                          <ul className="sub-menu">
-                            {data.namesub.map((submenu, index) => (
+                    {menus.map(
+                      (data, index) =>
+                        (!data.hide || user) && (
+                          <>
+                            {data.scrolling ? (
                               <li
                                 key={index}
-                                className={
-                                  pathname === submenu.links
-                                    ? "menu-item current-item"
-                                    : "menu-item "
-                                }
+                                onClick={() => handleOnClick(index)}
+                                className={`menu-item mx-1 ${
+                                  data.namesub ? "menu-item-has-children" : ""
+                                }  ${activeIndex === index ? "active" : ""} `}
                               >
-                                <Link to={submenu.links}>{submenu.sub}</Link>
+                                <a href={data.links}>{data.name}</a>
                               </li>
-                            ))}
-                          </ul>
-                        )}
-                      </li>
-                    ))}
+                            ) : (
+                              <li
+                                key={index}
+                                onClick={() => handleOnClick(index)}
+                                className={`menu-item mx-1 ${
+                                  data.namesub ? "menu-item-has-children" : ""
+                                }  ${activeIndex === index ? "active" : ""} `}
+                              >
+                                <Link to={data.links}>{data.name}</Link>
+                                {data.namesub && (
+                                  <ul className="sub-menu">
+                                    {data.namesub.map((submenu, index) => (
+                                      <li
+                                        key={index}
+                                        className={
+                                          pathname === submenu.links
+                                            ? "menu-item current-item"
+                                            : "menu-item "
+                                        }
+                                      >
+                                        <Link to={submenu.links}>
+                                          {submenu.sub}
+                                        </Link>
+                                      </li>
+                                    ))}
+                                  </ul>
+                                )}
+                              </li>
+                            )}
+                          </>
+                        )
+                    )}
                   </ul>
                 </nav>
                 {user ? (

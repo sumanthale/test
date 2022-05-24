@@ -1,32 +1,46 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import Flip from "react-reveal/Flip";
 
 const BestSeller = (props) => {
   return (
     <Flip top>
-      <section className="tf-best-seller">
+      <section
+        className="tf-best-seller"
+        style={{
+          position: "relative",
+          // margin: "80px 0",
+        }}
+      >
+        <span
+          id="about"
+          style={{
+            position: "absolute",
+            top: "-100px",
+          }}
+        ></span>
         <div className="best-seller-inner">
           <div className="row">
             <div className="col-md-12">
               <div className="sc-heading style-2">
-                <div className="content-left">
-                  <div className="inner">
-                    <h3>ABOUT US</h3>
-                    <p className="desc">
-                      Solana Laughing Buddha Lotto is the first Solana-Based
-                      Lottery that pays majority of it's revenue to holders. We
-                      believe giving out most of our revenue is the only way to
-                      stay legitimate. Other lottery NFTs give out 20, 30, or
-                      50%... but we give out 80%. Why? Because we're members of
-                      the ecosystem. We want to build for the longterm.
-                    </p>
-                  </div>
-                </div>
-                <div className="content-right">
-                  <Link to="/" className="sc-button style letter style-2">
-                    <span>Explore More</span>{" "}
-                  </Link>
+                <div className="inner">
+                  <h3>ABOUT US</h3>
+                  <p className="desc">
+                    We are a group of talented members that have come together
+                    in the blockchain and NFT space during pandemic.
+                    <br />
+                    We invested in many rugged projects or projects with no
+                    utilities like most of you guys. We are here to do the
+                    things the right way, that's why we funded the project
+                    entirely ourselves with utilities ready to go before the
+                    mint. We are proud to say this will be the first project on
+                    Solana where utility is ready to use from day one. A promise
+                    is a promise no matter how big or small it is !
+                    <br />
+                    <br />
+                    <span className="h4 text-success">
+                      Our promise is to make our holders and players profitable.
+                    </span>
+                  </p>
                 </div>
               </div>
             </div>

@@ -55,3 +55,31 @@ input:focus,
 textarea:focus {
   border: none !important;
 }
+
+.font-font {
+  font-family: "Urbanist", sans-serif !important;
+  line-height: 1;
+  text-align: left;
+}
+
+@media (max-width: 600px) {
+  .timeline-head {
+    font-size: x-large !important;
+  }
+
+  .join-community {
+    font-size: 2.5rem !important;
+  }
+  h5 {
+    font-size: 1.1rem !important;
+  }
+  .elves-of-elysium {
+    font-size: 50px !important;
+  }
+  p {
+    font-size: 1rem !important;
+  }
+}
+.roadmap-section p {
+  font-size: 1rem !important;
+}

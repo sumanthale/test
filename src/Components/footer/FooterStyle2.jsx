@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
-import logo from "../../assets/images/logo/logo_dark.png";
-import logo2x from "../../assets/images/logo/logo_dark.png";
+import logo from "../../assets/elves/logo.png";
 
 const FooterStyle2 = () => {
   const [dataSocial] = useState([
@@ -73,7 +72,7 @@ const FooterStyle2 = () => {
     <div>
       <footer id="footer" className="clearfix bg-style style-2 ">
         <div className="container">
-          <div className="row">
+          {/* <div className="row">
             <div className="col-lg-10 col-md-12 col-12">
               <div className="widget widget-logo">
                 <div className="logo-footer" id="logo-footer">
@@ -82,7 +81,10 @@ const FooterStyle2 = () => {
                       id="logo_footer"
                       src={logo}
                       alt="nft-gaming"
-                      srcSet={logo2x}
+                      srcSet={logo}
+                      style={{
+                        width: "50%",
+                      }}
                     />
                   </Link>
                 </div>
@@ -111,13 +113,13 @@ const FooterStyle2 = () => {
                 </ul>
               </div>
             </div>
-          </div>
+          </div> */}
         </div>
       </footer>
       <div className="bottom">
         <div className="container">
           <div className="bottom-inner">
-            Copyright © 2022 SOLONA LAUGHING BUDDHA
+            Copyright © {new Date().getFullYear()} ELVES OF ELYSIUM
           </div>
         </div>
       </div>

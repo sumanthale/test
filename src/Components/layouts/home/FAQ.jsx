@@ -2,7 +2,6 @@ import React from "react";
 import Accordion from "@mui/material/Accordion";
 import AccordionSummary from "@mui/material/AccordionSummary";
 import AccordionDetails from "@mui/material/AccordionDetails";
-import Typography from "@mui/material/Typography";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import Pulse from "react-reveal/Pulse";
 
@@ -10,12 +9,12 @@ const data = [
   {
     id: 1,
     question: "WHEN IS THE MINT DATE?",
-    answer: "We are minting soon on Magic Eden",
+    answer: "TBD",
   },
   {
     id: 2,
     question: "WHAT WAS THE MINT PRICE?",
-    answer: "1.5 SOL",
+    answer: `Whitelist - 2 SOL , Public Mint -  2.5 SOL`,
   },
   {
     id: 3,
@@ -57,7 +56,21 @@ const data = [
 const FAQ = (props) => {
   return (
     <Pulse>
-      <section className="tf-best-seller">
+      <section
+        className="tf-best-seller"
+        style={{
+          position: "relative",
+          marginTop: "60px",
+          marginBottom: "20px",
+        }}
+      >
+        <span
+          id="faq"
+          style={{
+            position: "absolute",
+            top: "-80px",
+          }}
+        ></span>
         <div className="best-seller-inner">
           <div className="row">
             <div className="col-md-12 text-center">
@@ -99,7 +112,12 @@ function FAQList({ faqs }) {
             aria-controls="panel1a-content"
             id="panel1a-header"
           >
-            <h5 className="text-uppercase">
+            <h5
+              className="text-uppercase text-justify"
+              style={{
+                lineHeight: "1.1",
+              }}
+            >
               <i className="fad fa-lightbulb  fa-md"></i> {faq.question}
             </h5>
           </AccordionSummary>

@@ -4,23 +4,13 @@ import img1 from "../images/home/buddha.png";
 
 const dataSlider = [
   {
-    title: "SOLANA LAUGHING BUDDHA",
-    description: `Solana Laughing Buddha Lotto is the first Solana-Based Lottery
-              that pays majority of it's revenue to holders. We believe giving
-              out most of our revenue is the only way to stay legitimate. Other
-              lottery NFTs give out 20, 30, or 50%... but we give out 80%. Why?
-              Because we're members of the ecosystem. We want to build for the
-              longterm.`,
+    title: "ELVES OF ELYSIUM",
+    description: `The player will filp over two cards, one card at a time. If the cards are not the same, they are filpped back over. If the cards flipped are the same, the pair is kept. Players continue to take turns until all the cards have been matched. The score points determine the players win rewards. Higher the score points better are the reward mulipliers and player earnings.`,
     img: img1,
   },
   {
     title: "SOLANA LAUGHING BUDDHA 2",
-    description: `Solana Laughing Buddha Lotto is the first Solana-Based Lottery
-              that pays majority of it's revenue to holders. We believe giving
-              out most of our revenue is the only way to stay legitimate. Other
-              lottery NFTs give out 20, 30, or 50%... but we give out 80%. Why?
-              Because we're members of the ecosystem. We want to build for the
-              longterm.`,
+    description: `The player will filp over two cards, one card at a time. If the cards are not the same, they are filpped back over. If the cards flipped are the same, the pair is kept. Players continue to take turns until all the cards have been matched. The score points determine the players win rewards. Higher the score points better are the reward mulipliers and player earnings.`,
     img: img1,
   },
 ];

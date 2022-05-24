@@ -245,7 +245,8 @@ p {
   font-weight: 400;
   font-size: 14px;
   line-height: 28px;
-  color: var(--color-2);
+  /* color: var(--color-2); */
+  color: var(--color-1);
 }
 
 strong,
@@ -1310,7 +1311,7 @@ a:focus {
 .header_1 #site-header-inner {
   align-items: center;
   justify-content: center;
-  padding: 15px 0;
+  padding: 5px 0;
 }
 
 /* logo  */

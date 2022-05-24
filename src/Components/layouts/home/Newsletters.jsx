@@ -4,7 +4,7 @@ import Tada from "react-reveal/Tada";
 export const Newsletters = () => {
   return (
     <Tada>
-      <section className="new-letter">
+      <section className="new-letter mb-4">
         <div className="container">
           <div className="new-letter-inner style-2">
             <div
@@ -14,9 +14,15 @@ export const Newsletters = () => {
               }}
             >
               <div className="text-center mb-4">
-                <h2 className="heading mb-2">JOIN OUR COMMUNITY</h2>
+                <h2 className="heading mb-2 join-community">
+                  JOIN OUR COMMUNITY
+                </h2>
                 <p className="sub-heading h6">
-                  GET INSTANT UPDATES FROM YOUR LAUGHING BUDDHA
+                  TO GET INSTANT UPDATES ABOUT{" "}
+                  <span className="text-danger font-weight-bold">
+                    CHAPTER TWO
+                  </span>
+                  .
                 </p>
               </div>
               <div className="d-flex justify-content-center ">
@@ -24,7 +30,7 @@ export const Newsletters = () => {
                   name="submit"
                   type="submit"
                   id="submit"
-                  className="sc-button style letter style-2 mr-4"
+                  className="sc-button style letter style-2 "
                 >
                   <span>Twitter</span>{" "}
                 </button>
