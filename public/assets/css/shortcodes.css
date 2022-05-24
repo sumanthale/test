@@ -2698,10 +2698,10 @@ blockquote .author::before {
   background: #fff;
 }
 
-.is_dark .slider .swiper-button-next,
+/* .is_dark .slider .swiper-button-next,
 .is_dark .slider .swiper-button-prev {
   background: linear-gradient(130.35deg, #6345ed 17.35%, #dc39fc 78.23%);
-}
+} */
 
 .is_dark .slider .swiper-button-next.swiper-button-disabled,
 .is_dark .slider .swiper-button-prev.swiper-button-disabled {
@@ -2715,12 +2715,12 @@ blockquote .author::before {
   border: 1px solid rgba(99, 69, 237, 0.2);
 }
 
-.is_dark .slider .swiper-button-prev::after,
+/* .is_dark .slider .swiper-button-prev::after,
 .is_dark .slider .swiper-button-next::after,
 .slider .swiper-button-next.swiper-button-disabled:after,
 .slider .swiper-button-prev.swiper-button-disabled:after {
   color: #fff;
-}
+} */
 
 .slider .swiper-button-prev::after,
 .slider .swiper-button-next::after {
