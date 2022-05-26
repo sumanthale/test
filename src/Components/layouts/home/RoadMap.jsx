@@ -40,9 +40,9 @@ const LiveAution = (props) => {
                         fontSize: "1.2rem",
                       }}
                     >
-                      Watch this space for more new updates. We are continually
+                      Watch this space for more new updates. We are continuously
                       improving our current offerings and the roadmap based on
-                      our community feedback and the market trends.
+                      our community feedback and market trends.
                     </p>
                   </div>
                 </div>
@@ -175,7 +175,7 @@ function CustomizedTimeline() {
               lineHeight: "1.5rem",
             }}
           >
-            🔹Website will be operational
+            🔹Website is operational
           </p>
           <p
             className="font-font mt-2"
@@ -223,7 +223,7 @@ function CustomizedTimeline() {
         </TimelineSeparator>
         <TimelineContent sx={{ py: "12px", px: 2 }}>
           <h4 sx={{}} className="text-primary font-font">
-            🚀 PHASE 3 - The Launch
+            🚀 PHASE 3 - Launch
           </h4>
           <p
             className="font-font mt-2"
@@ -239,7 +239,7 @@ function CustomizedTimeline() {
               lineHeight: "1.5rem",
             }}
           >
-            🔹ME Listing will be done
+            🔹ME Listing is done
           </p>
           <p
             className="font-font mt-2"
@@ -271,7 +271,7 @@ function CustomizedTimeline() {
         </TimelineSeparator>
         <TimelineContent sx={{ py: "12px", px: 2 }}>
           <h4 sx={{}} className="text-primary font-font">
-            🚀 PHASE 4 - The Growth
+            🚀 PHASE 4 - Growth
           </h4>
           <p
             className="font-font mt-2"
@@ -279,7 +279,7 @@ function CustomizedTimeline() {
               lineHeight: "1.5rem",
             }}
           >
-            🔹The Verification bot and the sales bot will be made operational.
+            🔹The Verification bot and the sales bot are operational.
           </p>
           <p
             className="font-font mt-2"
@@ -311,7 +311,7 @@ function CustomizedTimeline() {
               lineHeight: "1.5rem",
             }}
           >
-            🔹The staking system will is introduced for long-term holders
+            🔹The staking system is introduced for long-term holders
           </p>
         </TimelineContent>
       </TimelineItem>
@@ -343,7 +343,7 @@ function CustomizedTimeline() {
               lineHeight: "1.5rem",
             }}
           >
-            🔹Initiation of the second chapter of the Elves of Elysium
+            🔹Initiation of the second chapter of Elves of Elysium
           </p>
           <p
             className="font-font mt-2"
@@ -351,7 +351,7 @@ function CustomizedTimeline() {
               lineHeight: "1.5rem",
             }}
           >
-            🔹Completion of 50+P2E Arcade games by the end of 2022
+            🔹Completion of 50+ P2E Arcade games by the end of 2022
           </p>
           <p
             className="font-font mt-2"

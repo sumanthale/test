@@ -21,11 +21,9 @@ const dataSlider2 = [
   },
   {
     title: "SOLANA ARCADE GAMES",
-    description: `Solana Aracade Games is the first Solana-based Aracade games hosting 6 or more games before the mint and will be having 50+ games by end of 2022.
-All the games are categorized  into Skill, Luck and casino with cool UI and highly rewardings returns compared to the existing piers.
-The players can play either with $SOL or $ELVES and more partnership will be added in future.
+    description: `Solana Arcade Games is the first Solana-based Arcade platform hosting 6+ games before the mint and will have 50+ games by the end of 2022. All games are categorized into Skill, Luck, and Casino with cool UI and higher rewardings returns compared to the existing peers. The players can play either with $SOL or $ELVES and more partnered tokens.
 
-Ready to play and earn or want to experience the games`,
+Get ready to play and earn or enjoy the experience of the games!`,
     img1: Game,
     img2: Door,
     img3: Lotto,

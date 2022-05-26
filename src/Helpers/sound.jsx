@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import song from "../assets/elves/music/naruto.mp3";
 import ON from "../assets/elves/music/on.svg";
 import OFF from "../assets/elves/music/off.svg";
 
 const useAudio = () => {
   const [audio] = useState(new Audio(song));
-  const [playing, setPlaying] = useState(true);
+  const [playing, setPlaying] = useState(false);
 
   const toggle = () => setPlaying(!playing);
 
@@ -24,6 +24,12 @@ const useAudio = () => {
 
 const Player = ({ url }) => {
   const [playing, toggle] = useAudio();
+  const btnRef = useRef(null);
+  // useEffect(() => {
+  //  document.addEventListener("click", () =>{
+  //    toggle();
+  //  });
+  // }, []);
 
   return (
     <div
@@ -37,6 +43,7 @@ const Player = ({ url }) => {
       <img
         src={`${playing ? ON : OFF}`}
         onClick={toggle}
+        ref={btnRef}
         style={{
           width: "50px",
           cursor: "pointer",

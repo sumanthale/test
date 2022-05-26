@@ -40,15 +40,16 @@ const ChapterOne = (props) => {
                 <div className="content-right d-flex flex-column justify-content-center align-items-center">
                   <h3 className="my-3 text-center">Solana Arcade Games</h3>
                   <p className="desc text-justify px-3 mx-auto ">
-                    Solana Aracade Games is the first Solana-based Aracade games
-                    hosting 6 or more games before the mint and will be having
-                    50+ games by end of 2022. All the games are categorized into
-                    Skill, Luck and casino with cool UI and highly rewardings
-                    returns compared to the existing piers. <br />
+                    Solana Arcade Games is the first Solana-based Arcade
+                    platform hosting 6+ games before the mint and will have 50+
+                    games by the end of 2022. All games are categorized into
+                    Skill, Luck, and Casino with cool UI and higher rewardings
+                    returns compared to the existing peers. <br />
                     The players can play either with $SOL or $ELVES and more
-                    partnership will be added in future.
+                    partnered tokens.
                     <br />
-                    Ready to play and earn or want to experience the games
+                    Get ready to play and earn or enjoy the experience of the
+                    games!
                   </p>
                   <a
                     href="https://solanaarcadegames.netlify.app/"
@@ -72,17 +73,18 @@ const ChapterOne = (props) => {
 
                   <p className="desc text-justify px-3 mx-auto ">
                     Elves Giveaways is the first proven Solana based
-                    lottery/giveaways that not only pays the majority of its
-                    revenue to holders/players but also has 25% wins (1 in 4
-                    wins!). <br />
-                    We believe in giving out not just 30%, 40% or 50% but 80% of
-                    the revenue and 1 in 4 wins is the only legitimate way. All
-                    of our Giveaways will be transparent . <br />
-                    We have 4 giveaways/lottery in operational - SOL Manic
-                    Giveaways , SOL NFT Feast Giveaways, Progressive Jackpot
-                    Lottery and Hybrid Lottery.
+                    lottery/giveaway that not only pays the majority of its
+                    revenue to holders/players, but also has 25% wins (1 in 4
+                    wins!).
                     <br />
-                    Intrigued , ready to have fun ...
+                    We believe in giving out not just 30%, 40%, or 50%, but 80%
+                    of the revenue and 1 in 4 wins is the only legitimate way.
+                    All of our Giveaways will be transparent . <br />
+                    We have 4 giveaways/lottery in operation: SOL Manic
+                    Giveaways, SOL NFT Feast Giveaways, Progressive Jackpot
+                    Lottery, and Hybrid Lottery.
+                    <br />
+                    Intrigued? Get ready to have fun!
                     <a
                       href="https://solanaarcadegames.netlify.app/"
                       target="_blank"

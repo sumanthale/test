@@ -13,7 +13,7 @@ const data = [
   },
   {
     id: 2,
-    question: "WHAT WAS THE MINT PRICE?",
+    question: "WHAT IS THE MINT PRICE?",
     answer: `Whitelist - 2 SOL , Public Mint -  2.5 SOL`,
   },
   {
@@ -24,33 +24,33 @@ const data = [
   },
   {
     id: 4,
-    question: "What are the games to be launched next?",
+    question: "What type of games will be launched?",
     answer:
-      "We will be launching Book game and Mine Sweeper games in the coming weeks.",
+      "Solana Arcade Games will hold a collection of arcade games categorized into skill, Luck and Casino type games",
   },
-  {
-    id: 5,
-    question: "What are the benefits for holders?",
-    answer:
-      "NFT Holders will receive 50% of royalties from secondary sales and 3.5% out of the total flip volume. Legendary & Ultra Rare will get additional rewards for Selected Casino Games in the future.",
-  },
-  {
-    id: 6,
-    question: "What if the money I deposit doesn't appear in my wallet?",
-    answer:
-      "You can reach out to our team either in Discord(https://discord.gg/Npbt9vv5Kj) by opening a ticket or you can share the transaction details to team@solonalaughingbuddha.games. Our team will address your query and try to resolve it within 12 hrs.",
-  },
+  // {
+  //   id: 5,
+  //   question: "What are the benefits for holders?",
+  //   answer:
+  //     "NFT Holders will receive 50% of royalties from secondary sales and 3.5% out of the total flip volume. Legendary & Ultra Rare will get additional rewards for Selected Casino Games in the future.",
+  // },
+  // {
+  //   id: 6,
+  //   question: "What if the money I deposit doesn't appear in my wallet?",
+  //   answer:
+  //     "You can reach out to our team either in Discord(https://discord.gg/Npbt9vv5Kj) by opening a ticket or you can share the transaction details to team@solonalaughingbuddha.games. Our team will address your query and try to resolve it within 12 hrs.",
+  // },
   {
     id: 7,
     question: "When the rewards will be distributed to the holders?",
     answer: "Rewards will be distributed every week on Sunday at 8:00 PM UTC.",
   },
-  {
-    id: 8,
-    question: "What is the use of the in-game wallet?",
-    answer:
-      "You can deposit SOL from your Phantom or Solfare wallet into the in-game credits. After you finish playing your game you can withdraw the balance SOL to your main wallet. This feature allows you to play the game seamlessly without any lags.",
-  },
+  // {
+  //   id: 8,
+  //   question: "What is the use of the in-game wallet?",
+  //   answer:
+  //     "You can deposit SOL from your Phantom or Solfare wallet into the in-game credits. After you finish playing your game you can withdraw the balance SOL to your main wallet. This feature allows you to play the game seamlessly without any lags.",
+  // },
 ];
 
 const FAQ = (props) => {

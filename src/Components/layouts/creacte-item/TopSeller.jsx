@@ -11,7 +11,7 @@ const TopSeller = (props) => {
             <div className="sc-heading style-3">
               <h3>OUR TEAM</h3>
               <p className="desc">
-                Our team consists of a Project Lead, Senior Game Developers,
+                Our team consists of the Project Lead, Senior Game Developers,
                 BlockChain Experts, Supersonic Marketers, and Awesome Designers.
                 We're launching this to revolutionize the online arcade gaming
                 experience on Solana Blockchain.

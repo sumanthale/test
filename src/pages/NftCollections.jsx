@@ -44,10 +44,10 @@ const NftCollections = (props) => {
                   <h3 className="my-3 text-center">🔮 Mythic</h3>
                   <p className="desc text-justify px-3 mx-auto ">
                     Staking a Mythic NFT collection will yield 35{" "}
-                    <span className="text-success">$ELVES </span> token a day
-                    after the cooling period. These{" "}
+                    <span className="text-success">$ELVES </span> tokenss one
+                    day after the cooling period. These{" "}
                     <span className="text-success">$ELVES </span> can be used
-                    directly to play in our Solana Arcade games or traded on DEX
+                    directly to play our Solana Arcade games or traded on DEX
                     after listing.
                   </p>
                 </div>
@@ -65,7 +65,7 @@ const NftCollections = (props) => {
                   <p className="desc text-justify px-3 mx-auto ">
                     Staking a Legendary NFT collection will yield 25{" "}
                     <span className="text-success">$ELVES </span>
-                    token a day after the cooling period. These{" "}
+                    tokensa one day after the cooling period. These{" "}
                     <span className="text-success">$ELVES </span> can be used
                     directly to play in our Solana Arcade games or traded on DEX
                     after listing.
@@ -104,8 +104,8 @@ const NftCollections = (props) => {
                   <h3 className="my-3 text-center">🦄 Rare</h3>
                   <p className="desc text-justify px-3 mx-auto ">
                     Staking a Rare NFT collection will yield 15{" "}
-                    <span className="text-success">$ELVES </span> token a day
-                    after the cooling period. These{" "}
+                    <span className="text-success">$ELVES </span> tokenss one
+                    day after the cooling period. These{" "}
                     <span className="text-success">$ELVES </span> can be used
                     directly to play in our Solana Arcade games or traded on DEX
                     after listing.
@@ -124,7 +124,7 @@ const NftCollections = (props) => {
 
                   <p className="desc text-justify px-3 mx-auto ">
                     Staking a UnCommon NFT collection will yield 8{" "}
-                    <span className="text-success">$ELVES </span> token a day
+                    <span className="text-success">$ELVES </span> tokens one day
                     after the cooling period. These{" "}
                     <span className="text-success">$ELVES </span> can be used
                     directly to play in our Solana Arcade games or traded on DEX
@@ -164,7 +164,7 @@ const NftCollections = (props) => {
                   <h3 className="my-3 text-center">🧝🏻 Common</h3>
                   <p className="desc text-justify px-3 mx-auto ">
                     Staking a Common NFT collection will yield 5{" "}
-                    <span className="text-success">$ELVES </span> token a day
+                    <span className="text-success">$ELVES </span> tokens one day
                     after the cooling period. These{" "}
                     <span className="text-success">$ELVES </span> can be used
                     directly to play in our Solana Arcade games or traded on DEX

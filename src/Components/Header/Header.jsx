@@ -1,14 +1,9 @@
 import React, { useRef, useState, useEffect } from "react";
-import TopBar from "./TopBar";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import logo from "../../assets/elves/logo.png";
-import logo2x from "../../assets/images/logo/logo_dark.png";
-import logolight from "../../assets/images/logo/logo.png";
-import logolight2x from "../../assets/images/logo/logo.png";
 import menus from "../../pages/menu";
 import DarkMode from "./DarkMode";
 
-import { ColorModeContext } from "../../themes/colorModeContext";
 import { AuthContext } from "../../context/AuthContext";
 import {
   Avatar,
