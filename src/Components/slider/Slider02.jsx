@@ -81,7 +81,7 @@ const SliderItem = (props) => (
                     </>
                   ) : (
                     <a
-                      href="https://solanaarcadegames.netlify.app/"
+                      href="#soon"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="sc-button btn-bordered-white style letter "

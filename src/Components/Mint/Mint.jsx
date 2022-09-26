@@ -71,7 +71,11 @@ const Mint = () => {
                   <WinnerList mint={mint} />
                 </Grid>
                 <Grid item xs={12} sm={12} md={6}>
-                  <MintList winners={mint?.winners} category={mint?.category} />
+                  <MintList
+                    winners={mint?.winners}
+                    category={mint?.category}
+                    price={mint?.priceGA}
+                  />
                 </Grid>
               </Grid>
             </Box>

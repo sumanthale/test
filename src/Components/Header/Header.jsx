@@ -112,25 +112,19 @@ const Header = () => {
                     {menus.map(
                       (data, index) =>
                         (!data.hide || user) && (
-                          <>
+                          <li
+                            key={index}
+                            onClick={() => handleOnClick(index)}
+                            className={`menu-item mx-1 ${
+                              data.namesub ? "menu-item-has-children" : ""
+                            }  ${activeIndex === index ? "active" : ""} `}
+                          >
                             {data.scrolling ? (
-                              <li
-                                key={index}
-                                onClick={() => handleOnClick(index)}
-                                className={`menu-item mx-1 ${
-                                  data.namesub ? "menu-item-has-children" : ""
-                                }  ${activeIndex === index ? "active" : ""} `}
-                              >
+                              <>
                                 <a href={data.links}>{data.name}</a>
-                              </li>
+                              </>
                             ) : (
-                              <li
-                                key={index}
-                                onClick={() => handleOnClick(index)}
-                                className={`menu-item mx-1 ${
-                                  data.namesub ? "menu-item-has-children" : ""
-                                }  ${activeIndex === index ? "active" : ""} `}
-                              >
+                              <>
                                 <Link to={data.links}>{data.name}</Link>
                                 {data.namesub && (
                                   <ul className="sub-menu">
@@ -150,9 +144,9 @@ const Header = () => {
                                     ))}
                                   </ul>
                                 )}
-                              </li>
+                              </>
                             )}
-                          </>
+                          </li>
                         )
                     )}
                   </ul>

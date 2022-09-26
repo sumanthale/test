@@ -2,14 +2,10 @@ import React from "react";
 
 import dataSlider from "../assets/fake-data/dataSlider2";
 import Slider02 from "../components/slider/Slider02";
-import LiveMints from "../components/layouts/home/LiveMints";
 import RoadMap from "../components/layouts/home/RoadMap";
-import dataLiveAution from "../assets/fake-data/dataLiveAution";
 import About from "../components/layouts/home/About";
 import FAQ from "../components/layouts/home/FAQ";
 import dataBestSeller from "../assets/fake-data/dataBestSeller";
-import TrendingGames from "../components/layouts/home/TrendingCollections";
-import dataTrendingCollections from "../assets/fake-data/dataTrendingCollections";
 import Footer from "../components/footer/FooterStyle2";
 import { Newsletters } from "../components/layouts/home/Newsletters";
 import OURTeam from "../components/layouts/creacte-item/TopSeller";
@@ -21,8 +17,6 @@ const Home01 = () => {
   return (
     <div className="home-1">
       <Slider02 data={dataSlider} />
-      {/* <LiveMints data={dataLiveAution} /> */}
-      {/* <TrendingGames data={dataTrendingCollections} /> */}
       <ChapterOne />
       <NftCollections />
       <RoadMap data={dataBestSeller} />

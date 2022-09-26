@@ -72,7 +72,7 @@ export default function ClosedAdminMint() {
     async function fetchData() {
       const querySnapshot = await getDocs(collection(db, "mints"));
       querySnapshot.forEach((doc) => {
-        console.log(doc.id, " => ", doc.data());
+        // console.log(doc.id, " => ", doc.data());
         fetchedMints.push(doc.data());
       });
       setMints(fetchedMints);
@@ -126,7 +126,7 @@ export default function ClosedAdminMint() {
       winner,
       status,
     };
-    console.log(mintID);
+    // console.log(mintID);
     try {
       const mintRef = doc(db, "mints", mintID);
 

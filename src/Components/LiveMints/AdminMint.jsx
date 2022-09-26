@@ -62,6 +62,7 @@ export default function AdminMint() {
   const [open, setOpen] = React.useState(false);
   const [mintID, setMintID] = React.useState("");
   const [category, setCategory] = React.useState("");
+  const [type, setType] = React.useState("");
   const [supply, setSupply] = React.useState("");
   const [price, setPrice] = React.useState("");
   const [winner, setWinner] = React.useState("");
@@ -81,6 +82,7 @@ export default function AdminMint() {
         console.log(doc.id, " => ", doc.data());
         fetchedMints.push(doc.data());
       });
+      console.log(fetchedMints);
       setMints(fetchedMints);
     }
     fetchData();
@@ -90,6 +92,7 @@ export default function AdminMint() {
     setNewMint(false);
     setMintID(mint.id);
     setCategory(mint.category);
+    setType(mint.type);
     setSupply(mint.supply);
     setPrice(mint.price);
     setWinner(mint.winner);
@@ -129,6 +132,7 @@ export default function AdminMint() {
       produce((draft) => {
         const mint = draft.find((mint) => mint.id === mintID);
         mint.category = category;
+        mint.type = type;
         mint.supply = supply;
         mint.price = price;
         mint.winner = winner;
@@ -140,6 +144,7 @@ export default function AdminMint() {
     );
     const mint = {
       category,
+      type,
       supply,
       price,
       winner,
@@ -170,6 +175,7 @@ export default function AdminMint() {
     console.log(tokens);
     const mint = {
       category,
+      type,
       supply,
       price,
       winner,
@@ -195,6 +201,7 @@ export default function AdminMint() {
         produce((draft) => {
           draft.push({
             category,
+            type,
             supply,
             price,
             winner,
@@ -219,6 +226,7 @@ export default function AdminMint() {
     if (mintID) {
       setMintID("");
       setCategory("");
+      setType("");
       setSupply("");
       setPrice("");
       setWinner("");
@@ -272,9 +280,43 @@ export default function AdminMint() {
 
             <Grid container spacing={2} mt={2}>
               <Grid item xs={12} sm={6} md={4} rowSpacing={2}>
+                <FormControl fullWidth>
+                  <InputLabel id="demo-simple-select-label">
+                    Type of Lottery
+                  </InputLabel>
+                  <Select
+                    labelId="demo-simple-select-label"
+                    id="demo-simple-select"
+                    value={type}
+                    label="Type"
+                    onChange={(e) => {
+                      setType(e.target.value);
+                    }}
+                    required
+                    sx={{
+                      mb: 3,
+                      width: "100%",
+                      left: "50%",
+                      transform: "translateX(-50%)",
+                      "& > .MuiOutlinedInput-root": {
+                        background: theme.palette.background.default,
+                      },
+                      "& > .MuiSelect-select ": {
+                        background: theme.palette.background.default,
+                      },
+                    }}
+                  >
+                    <MenuItem value={"Hybrid"}>Hybrid</MenuItem>
+                    <MenuItem value={"NFT"}>NFT</MenuItem>
+                    <MenuItem value={"Jackpot"}>Jackpot</MenuItem>
+                    <MenuItem value={"Solana"}>Solana</MenuItem>
+                  </Select>
+                </FormControl>
+              </Grid>
+              <Grid item xs={12} sm={6} md={4} rowSpacing={2}>
                 <TextField
                   id="outlined-basic"
-                  label="Category"
+                  label="Lotto Name (Category)"
                   variant="outlined"
                   value={category}
                   onChange={(e) => {
@@ -400,7 +442,7 @@ export default function AdminMint() {
                   </Select>
                 </FormControl>
               </Grid>
-              <Grid item xs={12} sm={6} md={4} rowSpacing={2}>
+              {/* <Grid item xs={12} sm={6} md={4} rowSpacing={2}>
                 <TextField
                   id="outlined-basic"
                   label="Merchant Wallet Address"
@@ -423,7 +465,7 @@ export default function AdminMint() {
                     },
                   }}
                 />
-              </Grid>
+              </Grid> */}
               <Grid item xs={12} sm={6} md={4} rowSpacing={2}>
                 <TextField
                   id="outlined-basic"
@@ -434,7 +476,7 @@ export default function AdminMint() {
                   onChange={(e) => {
                     setPriceGA(e.target.value);
                   }}
-                  required
+                  required={type !== "NFT"}
                   sx={{
                     mb: 3,
                     width: "100%",
@@ -452,13 +494,13 @@ export default function AdminMint() {
               <Grid item xs={12} sm={6} md={4} rowSpacing={2}>
                 <TextField
                   id="outlined-basic"
-                  label="Price for nftGA's"
+                  label="Price for NFT GA"
                   variant="outlined"
                   value={nftGA}
                   onChange={(e) => {
                     setNftGA(e.target.value);
                   }}
-                  required
+                  required={type === "NFT"}
                   helperText="Write values seperated By commas(,)"
                   sx={{
                     mb: 3,
@@ -493,6 +535,7 @@ export default function AdminMint() {
           <TableHead>
             <TableRow>
               <StyledTableCell>Edit</StyledTableCell>
+              <StyledTableCell align="center">Type</StyledTableCell>
               <StyledTableCell align="center">Category</StyledTableCell>
               <StyledTableCell align="center">Supply</StyledTableCell>
               <StyledTableCell align="center">Price</StyledTableCell>
@@ -522,8 +565,12 @@ export default function AdminMint() {
                   </Button>
                 </StyledTableCell>
                 <StyledTableCell align="center" component="th" scope="row">
+                  {mint.type}
+                </StyledTableCell>
+                <StyledTableCell align="center" component="th" scope="row">
                   {mint.category}
                 </StyledTableCell>
+
                 <StyledTableCell align="center">{mint.supply}</StyledTableCell>
                 <StyledTableCell align="center">{mint.price}</StyledTableCell>
                 <StyledTableCell align="center">{mint.winner}</StyledTableCell>

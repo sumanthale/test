@@ -2,9 +2,9 @@ import React from "react";
 import Slide from "react-reveal/Bounce";
 import EOE from "../assets/elves/EoE.jpg";
 
-import Lotto1 from "../assets/lotto/1.png";
-import Lotto2 from "../assets/lotto/2.png";
-import Lotto3 from "../assets/lotto/3.png";
+import Lotto1 from "../assets/lotto/1.jpeg";
+import Lotto2 from "../assets/lotto/2.jpeg";
+import Lotto3 from "../assets/lotto/3.jpeg";
 const ChapterOne = (props) => {
   return (
     <section
@@ -52,7 +52,7 @@ const ChapterOne = (props) => {
                     games!
                   </p>
                   <a
-                    href="https://solanaarcadegames.netlify.app/"
+                    href="https://solanaarcadegames.com/"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="sc-button btn-bordered-white style letter "
@@ -69,10 +69,10 @@ const ChapterOne = (props) => {
             <div className="col-md-12">
               <div className="sc-heading style-2">
                 <div className="content-left d-flex flex-column justify-content-center align-items-center">
-                  <h3 className="mb-5 text-center">Elves Giveaways</h3>
+                  <h3 className="mb-5 text-center">Spyder Lotto</h3>
 
                   <p className="desc text-justify px-3 mx-auto ">
-                    Elves Giveaways is the first proven Solana based
+                    Spyder Lotto is the first proven Solana based
                     lottery/giveaway that not only pays the majority of its
                     revenue to holders/players, but also has 25% wins (1 in 4
                     wins!).
@@ -86,7 +86,7 @@ const ChapterOne = (props) => {
                     <br />
                     Intrigued? Get ready to have fun!
                     <a
-                      href="https://solanaarcadegames.netlify.app/"
+                      href="https://spyderlotto.netlify.app/"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="sc-button btn-bordered-white style letter ml-4 py-1 px-3"
@@ -100,21 +100,22 @@ const ChapterOne = (props) => {
                     src={Lotto1}
                     alt=""
                     style={{
-                      width: "25%",
+                      width: "30%",
                     }}
                   />
                   <img
                     src={Lotto2}
                     alt=""
                     style={{
-                      width: "25%",
+                      width: "30%",
+                      margin: "0 20px",
                     }}
                   />
                   <img
                     src={Lotto3}
                     alt=""
                     style={{
-                      width: "25%",
+                      width: "30%",
                     }}
                   />
                 </div>

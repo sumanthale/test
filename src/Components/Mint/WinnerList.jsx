@@ -21,7 +21,7 @@ import Paper from "@mui/material/Paper";
 export default function WinnerList({ mint }) {
   const { pickedValues, priceGA, nftGA } = mint;
 
-  if (!pickedValues || !priceGA || !nftGA) {
+  if (!pickedValues) {
     return "No Winners Selected Yet";
   }
   let prices = priceGA.split(",");
